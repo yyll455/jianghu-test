@@ -694,278 +694,298 @@
 </div>
 
 <script>
-  const dimNames = ["侠气","赤诚","桀骜","敏锐","重诺","赴义","沉稳","洒脱"];
-  const dimMax = 5;
+    const dimNames = ["侠气","赤诚","桀骜","敏锐","重诺","赴义","沉稳","洒脱"];
+    const dimMax = 5;
 
-  const questions = [
-    {title:"路遇陌生人被强敌追杀，你会？",opt:[{txt:"出手相助，不问缘由",s:[0,2,0,0,1,2,1,0]},{txt:"静观其变，看清局势再决定",s:[1,1,0,2,0,1,2,0]},{txt:"绕道避开，不多管闲事",s:[2,0,0,1,0,0,0,2]},{txt:"暗中布局，坐收渔利",s:[2,0,2,2,0,0,1,0]}]},
-    {title:"你最向往的兵器是？",opt:[{txt:"长剑，潇洒快意",s:[2,1,1,1,1,2,1,1]},{txt:"短刃，灵动突袭",s:[2,0,2,2,0,1,1,0]},{txt:"折扇，文雅藏锋",s:[1,1,0,2,0,1,2,1]},{txt:"重刀，势大力沉",s:[2,0,2,1,0,1,2,0]}]},
-    {title:"江湖传言藏有绝世秘籍，你会？",opt:[{txt:"不强求，随缘相逢",s:[1,1,0,1,0,0,1,2]},{txt:"有机会就探寻，不强夺",s:[1,1,1,1,0,1,1,1]},{txt:"权衡利弊，值得才出手",s:[1,0,0,2,0,0,2,0]},{txt:"不惜代价拿到手",s:[2,0,2,2,0,0,1,0]}]},
-    {title:"交好的友人背叛了你，你？",opt:[{txt:"伤心远离，不再为敌",s:[1,2,0,2,2,0,0,1]},{txt:"问清缘由，恩怨分明",s:[1,1,0,1,1,1,2,0]},{txt:"记在心底，伺机制衡",s:[2,0,0,2,0,0,1,0]},{txt:"有仇必报，绝不姑息",s:[2,0,2,1,0,0,1,0]}]},
-    {title:"门派委派凶险任务，你？",opt:[{txt:"主动请缨，挺身向前",s:[2,1,1,1,1,2,1,0]},{txt:"估量实力，量力而行",s:[1,1,0,1,0,1,2,1]},{txt:"委婉推辞，保全自身",s:[1,0,0,1,0,0,0,2]},{txt:"借机博取功劳筹码",s:[2,0,2,2,0,0,1,0]}]},
-    {title:"闲暇无事，你更喜欢？",opt:[{txt:"游历山河，行侠四方",s:[2,2,2,1,1,2,0,1]},{txt:"闭关打磨武艺",s:[1,1,0,1,0,1,2,0]},{txt:"品茶看书，静享清闲",s:[1,1,0,1,0,0,1,2]},{txt:"游走各方结交豪杰权贵",s:[2,1,2,2,0,0,1,0]}]},
-    {title:"有人当众出言羞辱你，你？",opt:[{txt:"一笑置之，不予争辩",s:[1,1,0,1,0,0,1,2]},{txt:"据理力争，当场辩驳",s:[2,1,1,1,0,1,2,0]},{txt:"隐忍记下，静待时机",s:[2,0,0,2,0,0,1,0]},{txt:"当场出手立威",s:[2,0,2,1,0,1,1,0]}]},
-    {title:"行走江湖，你更相信？",opt:[{txt:"人心本善，以诚相待",s:[0,2,1,0,2,2,1,1]},{txt:"人心复杂，谨慎相处",s:[1,1,0,2,0,1,2,0]},{txt:"利益为先，人情次之",s:[1,0,0,2,0,0,1,0]},{txt:"力量才是话语权",s:[2,0,2,1,0,1,1,0]}]},
-    {title:"意外得到一笔宝藏，你打算？",opt:[{txt:"散给贫苦百姓",s:[0,2,0,0,1,2,1,1]},{txt:"自留一部分，接济亲友",s:[1,2,1,0,2,1,1,0]},{txt:"妥善收好以备急用",s:[1,0,0,1,0,0,2,1]},{txt:"用来扩充自己势力",s:[2,0,2,1,0,0,1,0]}]},
-    {title:"比武交手，你看重？",opt:[{txt:"点到为止，敬重对手",s:[1,2,0,0,1,1,1,2]},{txt:"公平对决，分出胜负",s:[2,1,1,1,0,1,2,0]},{txt:"优先自保，不冒风险",s:[1,0,0,1,0,0,1,1]},{txt:"击溃对手使其臣服",s:[2,0,2,1,0,1,1,0]}]},
-    {title:"你如何看待江湖规矩？",opt:[{txt:"恪守道义，守规矩而行",s:[0,2,0,1,1,2,2,0]},{txt:"合理则守，不合理可变通",s:[1,1,1,1,0,1,1,1]},{txt:"规矩是束缚弱者的枷锁",s:[2,0,2,1,0,0,0,1]},{txt:"强者，自定规矩",s:[2,0,2,2,0,0,1,0]}]},
-    {title:"深夜赶路，密林传来异响，你？",opt:[{txt:"上前查看，恐有人遇险",s:[1,2,1,1,1,2,0,0]},{txt:"小心戒备，缓慢探查",s:[1,1,0,2,0,1,2,0]},{txt:"绕道而行，避开麻烦",s:[1,0,0,1,0,0,0,2]},{txt:"潜伏一旁静观动静",s:[2,0,0,2,0,0,1,0]}]},
-    {title:"恩人请你做一件违道义之事，你？",opt:[{txt:"断然拒绝，守住本心",s:[1,2,0,1,1,2,1,0]},{txt:"劝说恩人，寻找折中法子",s:[1,2,0,1,1,1,2,0]},{txt:"少量帮忙，不深陷其中",s:[1,1,0,1,0,0,1,1]},{txt:"报恩为先，照做不误",s:[1,1,0,1,2,1,0,0]}]},
-    {title:"心中理想居所是？",opt:[{txt:"四海为家，漂泊江湖",s:[2,1,2,1,1,1,0,2]},{txt:"山间草庐，习武静心",s:[1,1,0,1,0,1,1,2]},{txt:"繁华城镇，往来便利",s:[1,1,1,1,0,0,1,0]},{txt:"雄踞要塞，府邸恢弘",s:[2,0,2,1,0,0,2,0]}]},
-    {title:"看见弱小被门派欺压，你？",opt:[{txt:"挺身而出主持公道",s:[1,2,1,1,1,2,1,0]},{txt:"收集证据找人调停",s:[1,1,0,2,0,1,2,0]},{txt:"事不关己默默走开",s:[1,0,0,1,0,0,0,2]},{txt:"借此机会拉拢弱者",s:[2,0,2,2,0,0,1,0]}]},
-    {title:"修习武功，你追求？",opt:[{txt:"强身护心，守护他人",s:[1,2,0,1,1,2,1,0]},{txt:"精进武艺，挑战高手",s:[2,1,2,1,0,1,1,0]},{txt:"够用即可，不求顶尖",s:[1,1,0,0,0,0,1,2]},{txt:"天下无敌，无人敢犯",s:[2,0,2,1,0,1,2,0]}]},
-    {title:"和同伴想法严重冲突，你？",opt:[{txt:"尊重对方，求同存异",s:[1,2,0,1,2,1,0,2]},{txt:"理性辩论，商量共识",s:[1,1,0,1,1,1,2,0]},{txt:"保留想法，不再争辩",s:[1,0,0,1,0,0,1,1]},{txt:"说服众人，按我方案",s:[2,0,1,1,0,0,2,0]}]},
-    {title:"如果可以，你想要拥有？",opt:[{txt:"一颗赤诚侠义之心",s:[0,2,0,1,1,2,1,1]},{txt:"高超无双的武艺",s:[2,1,2,1,0,1,1,0]},{txt:"看透人心的智慧",s:[1,1,0,2,0,0,2,0]},{txt:"号令一方的权势",s:[2,0,2,1,0,0,2,0]}]},
-    {title:"江湖到处流传对你的谣言，你？",opt:[{txt:"清者自清，不去解释",s:[2,1,0,1,0,0,1,2]},{txt:"寻机会澄清真相",s:[1,2,0,1,0,1,2,0]},{txt:"暗中提防戒备旁人",s:[2,0,0,2,0,0,1,0]},{txt:"制造流言反击对方",s:[2,0,2,2,0,0,1,0]}]},
-    {title:"两难抉择，你优先考虑？",opt:[{txt:"是否对得起道义本心",s:[0,2,0,1,1,2,1,0]},{txt:"是否公平合理",s:[1,1,0,1,0,1,2,0]},{txt:"会不会连累自己",s:[1,0,0,1,0,0,1,1]},{txt:"能不能拿到好处",s:[1,0,1,2,0,0,1,0]}]},
-    {title:"看待输赢胜负，你？",opt:[{txt:"输赢不重要，本心为先",s:[1,2,0,0,0,1,0,2]},{txt:"尽力而为，胜负坦然",s:[1,1,1,1,0,1,1,1]},{txt:"尽量不输，保全自身",s:[1,0,0,1,0,0,2,0]},{txt:"只能赢，不能输",s:[2,0,2,1,0,1,2,0]}]},
-    {title:"结识新的江湖友人，你？",opt:[{txt:"真心相待，敞开心扉",s:[0,2,1,0,2,1,1,0]},{txt:"慢慢相处，日久见心",s:[1,1,0,1,1,1,2,0]},{txt:"有所保留，不轻交心",s:[2,0,0,2,0,0,1,1]},{txt:"判断对方有无用处",s:[2,0,1,2,0,0,1,0]}]},
-    {title:"暴雨夜里，陌生旅人求借宿，你？",opt:[{txt:"热情收留，备好食宿",s:[0,2,1,0,1,2,1,0]},{txt:"仔细盘问，无碍再收留",s:[1,1,0,2,0,1,2,0]},{txt:"婉言拒绝，不便收留",s:[1,0,0,1,0,0,1,1]},{txt:"试探底细，看有无利",s:[2,0,1,2,0,0,1,0]}]},
-    {title:"你更愿意追随何人？",opt:[{txt:"心怀苍生的大侠",s:[0,2,0,1,1,2,1,1]},{txt:"武艺高强的良师",s:[2,1,2,1,0,1,1,0]},{txt:"足智多谋的智者",s:[1,1,0,2,0,0,2,0]},{txt:"胸怀宏图的霸主",s:[2,0,2,1,0,0,2,0]}]},
-    {title:"发现师门藏着过错，你？",opt:[{txt:"直言劝谏，纠正过错",s:[1,2,0,1,1,2,1,0]},{txt:"私下禀告掌门审慎处理",s:[1,1,0,1,0,1,2,0]},{txt:"装作不知明哲保身",s:[1,0,0,1,0,0,1,1]},{txt:"抓住把柄当作筹码",s:[2,0,1,2,0,0,1,0]}]},
-    {title:"空闲时光，你偏爱？",opt:[{txt:"扶危济困，行走四方",s:[1,2,1,1,1,2,0,1]},{txt:"与人切磋交流武学",s:[2,1,2,1,0,1,1,0]},{txt:"静坐独处修身养性",s:[1,1,0,1,0,0,1,2]},{txt:"谋划布局经营人脉",s:[2,0,1,2,0,0,2,0]}]},
-    {title:"对手实力远胜于你，你？",opt:[{txt:"纵然不敌，守住道义底线",s:[1,2,0,1,0,2,1,0]},{txt:"暂避锋芒，等候时机",s:[1,1,0,2,0,1,2,0]},{txt:"不正面硬拼保全性命",s:[1,0,0,1,0,0,1,1]},{txt:"不择手段也要取胜",s:[2,0,2,2,0,0,1,0]}]},
-    {title:"你觉得江湖最重要的是？",opt:[{txt:"侠义",s:[0,2,0,1,1,2,1,0]},{txt:"武艺",s:[2,1,2,1,0,1,1,0]},{txt:"智谋",s:[1,1,0,2,0,0,2,0]},{txt:"权柄",s:[2,0,2,1,0,0,2,0]}]},
-    {title:"别人受了你恩惠，你希望？",opt:[{txt:"不必回报，随缘就好",s:[0,2,0,0,1,1,0,2]},{txt:"危难之时互相扶持",s:[1,2,0,1,2,1,1,0]},{txt:"对方记在心里，来日相助",s:[1,1,0,1,1,0,2,0]},{txt:"偿还等价的回报",s:[2,0,1,1,0,0,1,0]}]},
-    {title:"如果可以改变一桩江湖旧事，你想？",opt:[{txt:"消弭纷争，四海安宁",s:[0,2,0,0,1,2,1,1]},{txt:"铲除奸邪，还江湖清明",s:[1,2,1,1,0,2,1,0]},{txt:"独守一方清净天地",s:[1,1,0,1,0,0,1,2]},{txt:"重整格局，由我执掌",s:[2,0,2,2,0,0,2,0]}]},
-    {title:"江湖上流传一份可以改变他人命运的秘卷，你会？",opt:[{txt:"毁掉秘卷，避免祸乱",s:[1,2,0,1,1,2,2,1]},{txt:"妥善封存，严加看管",s:[1,1,0,2,1,1,2,1]},{txt:"不去触碰，远远避开",s:[1,0,0,1,0,0,1,2]},{txt:"拿到手中，为己所用",s:[2,0,2,2,0,0,1,0]}]},
-    {title:"昔日仇敌落难向你求助，你？",opt:[{txt:"放下仇怨，出手相助",s:[1,2,0,1,1,2,1,2]},{txt:"有限度相助，恩怨两清",s:[1,1,0,2,1,1,2,1]},{txt:"冷眼旁观，不予理会",s:[2,0,2,1,0,0,1,1]},{txt:"趁机清算旧仇",s:[2,0,2,2,0,0,1,0]}]},
-    {title:"当你的理想与师门利益发生冲突，你？",opt:[{txt:"坚守理想，据理力争",s:[2,2,2,1,1,2,1,1]},{txt:"折中调和，兼顾双方",s:[1,1,0,2,1,1,2,1]},{txt:"顺从师门，压抑本心",s:[1,1,0,1,2,1,2,0]},{txt:"直接叛出门派，我行我素",s:[2,0,2,2,0,0,0,2]}]},
-    {title:"你获得足以颠覆江湖的力量，第一念头是？",opt:[{txt:"守护天下苍生安宁",s:[1,2,1,1,1,2,2,1]},{txt:"维护心中的道义秩序",s:[1,1,1,2,1,2,2,1]},{txt:"收敛力量，不去干涉世事",s:[1,1,0,1,0,1,1,2]},{txt:"借此机会实现自己野心",s:[2,0,2,2,0,0,1,0]}]},
-    {title:"偶遇隐居多年的绝世高手，你希望？",opt:[{txt:"与他论道，不求拜师",s:[1,1,1,2,0,1,2,2]},{txt:"诚心恳求，拜入门下",s:[1,2,0,1,1,2,2,0]},{txt:"简单问候，便即离开",s:[1,1,0,1,0,1,1,2]},{txt:"设法夺取他的武学",s:[2,0,2,2,0,0,1,0]}]},
-    {title:"面对一份足以诱惑你的巨大利益，你首要考量？",opt:[{txt:"是否违背本心道义",s:[0,2,0,1,1,2,1,1]},{txt:"会不会伤及无辜之人",s:[1,2,0,1,1,2,2,1]},{txt:"风险大小，值不值得",s:[1,0,0,2,0,1,2,1]},{txt:"收益多少，能否到手",s:[2,0,2,2,0,0,1,0]}]},
-    {title:"同道好友误入歧途犯下大错，你会？",opt:[{txt:"苦口劝他回头，愿陪他赎罪",s:[1,2,1,1,2,2,1,1]},{txt:"按江湖法度公正处置",s:[1,1,0,2,1,1,2,0]},{txt:"顾念旧情选择包庇",s:[1,2,0,1,2,1,1,0]},{txt:"直接揭发，划清界限",s:[2,0,2,2,0,0,1,0]}]},
-    {title:"你认为江湖传说中的英雄，应当？",opt:[{txt:"心怀苍生，不计得失",s:[1,2,0,1,1,2,1,1]},{txt:"行事坦荡，问心无愧",s:[1,1,1,1,1,1,2,1]},{txt:"实力高强，威震四方",s:[2,1,2,1,0,1,1,0]},{txt:"手握权柄，号令群雄",s:[2,0,2,2,0,0,2,0]}]},
-    {title:"若是前路布满死局几乎无解，你会？",opt:[{txt:"拼死一搏，绝不屈服",s:[2,2,2,1,0,2,1,1]},{txt:"寻找破绽，静待转机",s:[1,1,0,2,0,1,2,1]},{txt:"保全性命，选择退避",s:[1,0,0,1,0,0,1,2]},{txt:"不惜代价，打破一切规则",s:[2,0,2,2,0,0,1,0]}]},
-    {title:"当虚名摆在你面前，你作何选择？",opt:[{txt:"视若浮云，毫不在意",s:[1,2,0,1,0,1,1,2]},{txt:"无愧于心，则坦然接受",s:[1,1,1,1,1,1,2,1]},{txt:"可以接受，但不为所困",s:[1,1,0,2,0,1,2,1]},{txt:"竭力追逐，博取名望",s:[2,0,2,2,0,0,1,0]}]}
-  ];
+    const questions = [
+      {title:"路遇陌生人被强敌追杀，你会？",opt:[{txt:"出手相助，不问缘由",s:[0,2,0,0,1,2,1,0]},{txt:"静观其变，看清局势再决定",s:[1,1,0,2,0,1,2,0]},{txt:"绕道避开，不多管闲事",s:[2,0,0,1,0,0,0,2]},{txt:"暗中布局，坐收渔利",s:[2,0,2,2,0,0,1,0]}]},
+      {title:"你最向往的兵器是？",opt:[{txt:"长剑，潇洒快意",s:[2,1,1,1,1,2,1,1]},{txt:"短刃，灵动突袭",s:[2,0,2,2,0,1,1,0]},{txt:"折扇，文雅藏锋",s:[1,1,0,2,0,1,2,1]},{txt:"重刀，势大力沉",s:[2,0,2,1,0,1,2,0]}]},
+      {title:"江湖传言藏有绝世秘籍，你会？",opt:[{txt:"不强求，随缘相逢",s:[1,1,0,1,0,0,1,2]},{txt:"有机会就探寻，不强夺",s:[1,1,1,1,0,1,1,1]},{txt:"权衡利弊，值得才出手",s:[1,0,0,2,0,0,2,0]},{txt:"不惜代价拿到手",s:[2,0,2,2,0,0,1,0]}]},
+      {title:"交好的友人背叛了你，你？",opt:[{txt:"伤心远离，不再为敌",s:[1,2,0,2,2,0,0,1]},{txt:"问清缘由，恩怨分明",s:[1,1,0,1,1,1,2,0]},{txt:"记在心底，伺机制衡",s:[2,0,0,2,0,0,1,0]},{txt:"有仇必报，绝不姑息",s:[2,0,2,1,0,0,1,0]}]},
+      {title:"门派委派凶险任务，你？",opt:[{txt:"主动请缨，挺身向前",s:[2,1,1,1,1,2,1,0]},{txt:"估量实力，量力而行",s:[1,1,0,1,0,1,2,1]},{txt:"委婉推辞，保全自身",s:[1,0,0,1,0,0,0,2]},{txt:"借机博取功劳筹码",s:[2,0,2,2,0,0,1,0]}]},
+      {title:"闲暇无事，你更喜欢？",opt:[{txt:"游历山河，行侠四方",s:[2,2,2,1,1,2,0,1]},{txt:"闭关打磨武艺",s:[1,1,0,1,0,1,2,0]},{txt:"品茶看书，静享清闲",s:[1,1,0,1,0,0,1,2]},{txt:"游走各方结交豪杰权贵",s:[2,1,2,2,0,0,1,0]}]},
+      {title:"有人当众出言羞辱你，你？",opt:[{txt:"一笑置之，不予争辩",s:[1,1,0,1,0,0,1,2]},{txt:"据理力争，当场辩驳",s:[2,1,1,1,0,1,2,0]},{txt:"隐忍记下，静待时机",s:[2,0,0,2,0,0,1,0]},{txt:"当场出手立威",s:[2,0,2,1,0,1,1,0]}]},
+      {title:"行走江湖，你更相信？",opt:[{txt:"人心本善，以诚相待",s:[0,2,1,0,2,2,1,1]},{txt:"人心复杂，谨慎相处",s:[1,1,0,2,0,1,2,0]},{txt:"利益为先，人情次之",s:[1,0,0,2,0,0,1,0]},{txt:"力量才是话语权",s:[2,0,2,1,0,1,1,0]}]},
+      {title:"意外得到一笔宝藏，你打算？",opt:[{txt:"散给贫苦百姓",s:[0,2,0,0,1,2,1,1]},{txt:"自留一部分，接济亲友",s:[1,2,1,0,2,1,1,0]},{txt:"妥善收好以备急用",s:[1,0,0,1,0,0,2,1]},{txt:"用来扩充自己势力",s:[2,0,2,1,0,0,1,0]}]},
+      {title:"比武交手，你看重？",opt:[{txt:"点到为止，敬重对手",s:[1,2,0,0,1,1,1,2]},{txt:"公平对决，分出胜负",s:[2,1,1,1,0,1,2,0]},{txt:"优先自保，不冒风险",s:[1,0,0,1,0,0,1,1]},{txt:"击溃对手使其臣服",s:[2,0,2,1,0,1,1,0]}]},
+      {title:"你如何看待江湖规矩？",opt:[{txt:"恪守道义，守规矩而行",s:[0,2,0,1,1,2,2,0]},{txt:"合理则守，不合理可变通",s:[1,1,1,1,0,1,1,1]},{txt:"规矩是束缚弱者的枷锁",s:[2,0,2,1,0,0,0,1]},{txt:"强者，自定规矩",s:[2,0,2,2,0,0,1,0]}]},
+      {title:"深夜赶路，密林传来异响，你？",opt:[{txt:"上前查看，恐有人遇险",s:[1,2,1,1,1,2,0,0]},{txt:"小心戒备，缓慢探查",s:[1,1,0,2,0,1,2,0]},{txt:"绕道而行，避开麻烦",s:[1,0,0,1,0,0,0,2]},{txt:"潜伏一旁静观动静",s:[2,0,0,2,0,0,1,0]}]},
+      {title:"恩人请你做一件违道义之事，你？",opt:[{txt:"断然拒绝，守住本心",s:[1,2,0,1,1,2,1,0]},{txt:"劝说恩人，寻找折中法子",s:[1,2,0,1,1,1,2,0]},{txt:"少量帮忙，不深陷其中",s:[1,1,0,1,0,0,1,1]},{txt:"报恩为先，照做不误",s:[1,1,0,1,2,1,0,0]}]},
+      {title:"心中理想居所是？",opt:[{txt:"四海为家，漂泊江湖",s:[2,1,2,1,1,1,0,2]},{txt:"山间草庐，习武静心",s:[1,1,0,1,0,1,1,2]},{txt:"繁华城镇，往来便利",s:[1,1,1,1,0,0,1,0]},{txt:"雄踞要塞，府邸恢弘",s:[2,0,2,1,0,0,2,0]}]},
+      {title:"看见弱小被门派欺压，你？",opt:[{txt:"挺身而出主持公道",s:[1,2,1,1,1,2,1,0]},{txt:"收集证据找人调停",s:[1,1,0,2,0,1,2,0]},{txt:"事不关己默默走开",s:[1,0,0,1,0,0,0,2]},{txt:"借此机会拉拢弱者",s:[2,0,2,2,0,0,1,0]}]},
+      {title:"修习武功，你追求？",opt:[{txt:"强身护心，守护他人",s:[1,2,0,1,1,2,1,0]},{txt:"精进武艺，挑战高手",s:[2,1,2,1,0,1,1,0]},{txt:"够用即可，不求顶尖",s:[1,1,0,0,0,0,1,2]},{txt:"天下无敌，无人敢犯",s:[2,0,2,1,0,1,2,0]}]},
+      {title:"和同伴想法严重冲突，你？",opt:[{txt:"尊重对方，求同存异",s:[1,2,0,1,2,1,0,2]},{txt:"理性辩论，商量共识",s:[1,1,0,1,1,1,2,0]},{txt:"保留想法，不再争辩",s:[1,0,0,1,0,0,1,1]},{txt:"说服众人，按我方案",s:[2,0,1,1,0,0,2,0]}]},
+      {title:"如果可以，你想要拥有？",opt:[{txt:"一颗赤诚侠义之心",s:[0,2,0,1,1,2,1,1]},{txt:"高超无双的武艺",s:[2,1,2,1,0,1,1,0]},{txt:"看透人心的智慧",s:[1,1,0,2,0,0,2,0]},{txt:"号令一方的权势",s:[2,0,2,1,0,0,2,0]}]},
+      {title:"江湖到处流传对你的谣言，你？",opt:[{txt:"清者自清，不去解释",s:[2,1,0,1,0,0,1,2]},{txt:"寻机会澄清真相",s:[1,2,0,1,0,1,2,0]},{txt:"暗中提防戒备旁人",s:[2,0,0,2,0,0,1,0]},{txt:"制造流言反击对方",s:[2,0,2,2,0,0,1,0]}]},
+      {title:"两难抉择，你优先考虑？",opt:[{txt:"是否对得起道义本心",s:[0,2,0,1,1,2,1,0]},{txt:"是否公平合理",s:[1,1,0,1,0,1,2,0]},{txt:"会不会连累自己",s:[1,0,0,1,0,0,1,1]},{txt:"能不能拿到好处",s:[1,0,1,2,0,0,1,0]}]},
+      {title:"看待输赢胜负，你？",opt:[{txt:"输赢不重要，本心为先",s:[1,2,0,0,0,1,0,2]},{txt:"尽力而为，胜负坦然",s:[1,1,1,1,0,1,1,1]},{txt:"尽量不输，保全自身",s:[1,0,0,1,0,0,2,0]},{txt:"只能赢，不能输",s:[2,0,2,1,0,1,2,0]}]},
+      {title:"结识新的江湖友人，你？",opt:[{txt:"真心相待，敞开心扉",s:[0,2,1,0,2,1,1,0]},{txt:"慢慢相处，日久见心",s:[1,1,0,1,1,1,2,0]},{txt:"有所保留，不轻交心",s:[2,0,0,2,0,0,1,1]},{txt:"判断对方有无用处",s:[2,0,1,2,0,0,1,0]}]},
+      {title:"暴雨夜里，陌生旅人求借宿，你？",opt:[{txt:"热情收留，备好食宿",s:[0,2,1,0,1,2,1,0]},{txt:"仔细盘问，无碍再收留",s:[1,1,0,2,0,1,2,0]},{txt:"婉言拒绝，不便收留",s:[1,0,0,1,0,0,1,1]},{txt:"试探底细，看有无利",s:[2,0,1,2,0,0,1,0]}]},
+      {title:"你更愿意追随何人？",opt:[{txt:"心怀苍生的大侠",s:[0,2,0,1,1,2,1,1]},{txt:"武艺高强的良师",s:[2,1,2,1,0,1,1,0]},{txt:"足智多谋的智者",s:[1,1,0,2,0,0,2,0]},{txt:"胸怀宏图的霸主",s:[2,0,2,1,0,0,2,0]}]},
+      {title:"发现师门藏着过错，你？",opt:[{txt:"直言劝谏，纠正过错",s:[1,2,0,1,1,2,1,0]},{txt:"私下禀告掌门审慎处理",s:[1,1,0,1,0,1,2,0]},{txt:"装作不知明哲保身",s:[1,0,0,1,0,0,1,1]},{txt:"抓住把柄当作筹码",s:[2,0,1,2,0,0,1,0]}]},
+      {title:"空闲时光，你偏爱？",opt:[{txt:"扶危济困，行走四方",s:[1,2,1,1,1,2,0,1]},{txt:"与人切磋交流武学",s:[2,1,2,1,0,1,1,0]},{txt:"静坐独处修身养性",s:[1,1,0,1,0,0,1,2]},{txt:"谋划布局经营人脉",s:[2,0,1,2,0,0,2,0]}]},
+      {title:"对手实力远胜于你，你？",opt:[{txt:"纵然不敌，守住道义底线",s:[1,2,0,1,0,2,1,0]},{txt:"暂避锋芒，等候时机",s:[1,1,0,2,0,1,2,0]},{txt:"不正面硬拼保全性命",s:[1,0,0,1,0,0,1,1]},{txt:"不择手段也要取胜",s:[2,0,2,2,0,0,1,0]}]},
+      {title:"你觉得江湖最重要的是？",opt:[{txt:"侠义",s:[0,2,0,1,1,2,1,0]},{txt:"武艺",s:[2,1,2,1,0,1,1,0]},{txt:"智谋",s:[1,1,0,2,0,0,2,0]},{txt:"权柄",s:[2,0,2,1,0,0,2,0]}]},
+      {title:"别人受了你恩惠，你希望？",opt:[{txt:"不必回报，随缘就好",s:[0,2,0,0,1,1,0,2]},{txt:"危难之时互相扶持",s:[1,2,0,1,2,1,1,0]},{txt:"对方记在心里，来日相助",s:[1,1,0,1,1,0,2,0]},{txt:"偿还等价的回报",s:[2,0,1,1,0,0,1,0]}]},
+      {title:"如果可以改变一桩江湖旧事，你想？",opt:[{txt:"消弭纷争，四海安宁",s:[0,2,0,0,1,2,1,1]},{txt:"铲除奸邪，还江湖清明",s:[1,2,1,1,0,2,1,0]},{txt:"独守一方清净天地",s:[1,1,0,1,0,0,1,2]},{txt:"重整格局，由我执掌",s:[2,0,2,2,0,0,2,0]}]},
+      {title:"江湖上流传一份可以改变他人命运的秘卷，你会？",opt:[{txt:"毁掉秘卷，避免祸乱",s:[1,2,0,1,1,2,2,1]},{txt:"妥善封存，严加看管",s:[1,1,0,2,1,1,2,1]},{txt:"不去触碰，远远避开",s:[1,0,0,1,0,0,1,2]},{txt:"拿到手中，为己所用",s:[2,0,2,2,0,0,1,0]}]},
+      {title:"昔日仇敌落难向你求助，你？",opt:[{txt:"放下仇怨，出手相助",s:[1,2,0,1,1,2,1,2]},{txt:"有限度相助，恩怨两清",s:[1,1,0,2,1,1,2,1]},{txt:"冷眼旁观，不予理会",s:[2,0,2,1,0,0,1,1]},{txt:"趁机清算旧仇",s:[2,0,2,2,0,0,1,0]}]},
+      {title:"当你的理想与师门利益发生冲突，你？",opt:[{txt:"坚守理想，据理力争",s:[2,2,2,1,1,2,1,1]},{txt:"折中调和，兼顾双方",s:[1,1,0,2,1,1,2,1]},{txt:"顺从师门，压抑本心",s:[1,1,0,1,2,1,2,0]},{txt:"直接叛出门派，我行我素",s:[2,0,2,2,0,0,0,2]}]},
+      {title:"你获得足以颠覆江湖的力量，第一念头是？",opt:[{txt:"守护天下苍生安宁",s:[1,2,1,1,1,2,2,1]},{txt:"维护心中的道义秩序",s:[1,1,1,2,1,2,2,1]},{txt:"收敛力量，不去干涉世事",s:[1,1,0,1,0,1,1,2]},{txt:"借此机会实现自己野心",s:[2,0,2,2,0,0,1,0]}]},
+      {title:"偶遇隐居多年的绝世高手，你希望？",opt:[{txt:"与他论道，不求拜师",s:[1,1,1,2,0,1,2,2]},{txt:"诚心恳求，拜入门下",s:[1,2,0,1,1,2,2,0]},{txt:"简单问候，便即离开",s:[1,1,0,1,0,1,1,2]},{txt:"设法夺取他的武学",s:[2,0,2,2,0,0,1,0]}]},
+      {title:"面对一份足以诱惑你的巨大利益，你首要考量？",opt:[{txt:"是否违背本心道义",s:[0,2,0,1,1,2,1,1]},{txt:"会不会伤及无辜之人",s:[1,2,0,1,1,2,2,1]},{txt:"风险大小，值不值得",s:[1,0,0,2,0,1,2,1]},{txt:"收益多少，能否到手",s:[2,0,2,2,0,0,1,0]}]},
+      {title:"同道好友误入歧途犯下大错，你会？",opt:[{txt:"苦口劝他回头，愿陪他赎罪",s:[1,2,1,1,2,2,1,1]},{txt:"按江湖法度公正处置",s:[1,1,0,2,1,1,2,0]},{txt:"顾念旧情选择包庇",s:[1,2,0,1,2,1,1,0]},{txt:"直接揭发，划清界限",s:[2,0,2,2,0,0,1,0]}]},
+      {title:"你认为江湖传说中的英雄，应当？",opt:[{txt:"心怀苍生，不计得失",s:[1,2,0,1,1,2,1,1]},{txt:"行事坦荡，问心无愧",s:[1,1,1,1,1,1,2,1]},{txt:"实力高强，威震四方",s:[2,1,2,1,0,1,1,0]},{txt:"手握权柄，号令群雄",s:[2,0,2,2,0,0,2,0]}]},
+      {title:"若是前路布满死局几乎无解，你会？",opt:[{txt:"拼死一搏，绝不屈服",s:[2,2,2,1,0,2,1,1]},{txt:"寻找破绽，静待转机",s:[1,1,0,2,0,1,2,1]},{txt:"保全性命，选择退避",s:[1,0,0,1,0,0,1,2]},{txt:"不惜代价，打破一切规则",s:[2,0,2,2,0,0,1,0]}]},
+      {title:"当虚名摆在你面前，你作何选择？",opt:[{txt:"视若浮云，毫不在意",s:[1,2,0,1,0,1,1,2]},{txt:"无愧于心，则坦然接受",s:[1,1,1,1,1,1,2,1]},{txt:"可以接受，但不为所困",s:[1,1,0,2,0,1,2,1]},{txt:"竭力追逐，博取名望",s:[2,0,2,2,0,0,1,0]}]}
+    ];
 
-  // 18个精简后的黄金角色，图鉴与结果完全同步江南风独白
-  const resultList = [
-    {name:"赤心侠士",desc:"一腔赤诚，道义为先",newDesc:"风雪压城时，总要有人把滚烫的脊梁挺直。我不求青史留名，只愿这人间还有公道在，哪怕前方是刀山火海，这双拳也绝不肯轻易放下。",vec:[5,5,1,2,4,5,2,3]},
-    {name:"凌云少侠",desc:"意气风发，初生牛犊",newDesc:"少年人的胸膛里，永远烧着一把烧不尽的炽烈火焰。别笑我不知天高地厚，哪怕撞得粉身碎骨，我也要凭这双铁拳，去撕开这沉闷的江湖。",vec:[5,5,4,3,3,4,2,3]},
-    {name:"折梅剑客",desc:"踏雪寻梅，剑气带香",newDesc:"长剑出鞘如龙吟，斩断的从不是恩怨，而是这世道强加的枷锁。我只愿做一缕抓不住的清风，携一壶烈酒，在无尽的长夜里独自快意恩仇。",vec:[4,4,2,3,4,4,3,4]},
-    {name:"独行刀客",desc:"独来独往，刀斩是非",newDesc:"冷月如霜，孤影相随，我向来习惯了黑暗里的刀光血影。不需要同伴的温存，也不需要旁人的理解，所有的恩怨是非，皆用手中的刀做个了断。",vec:[4,2,5,3,3,4,3,2]},
-    {name:"玉面军师",desc:"擅长布局，运筹帷幄",newDesc:"羽扇轻扬，谈笑间樯橹灰飞烟灭，运筹帷幄才是最让人着迷的杀局。我不需要亲自挥刀冲锋，只要用胸中沟壑，便能轻易搅动这天下的风云变幻。",vec:[3,2,4,5,3,3,4,2]},
-    {name:"慎思谋士",desc:"心思细腻，三思而行",newDesc:"棋盘之上，落子无悔，每一步算计都是为了在乱世中求得一线生机。我不信天命，只信人心的筹谋，在波诡云谲的局里，唯有谨慎方能活到最后。",vec:[2,2,3,5,3,2,5,2]},
-    {name:"情报暗探",desc:"游走各方，洞悉秘闻",newDesc:"烛影摇曳的暗室里，我听到了这个江湖最不可告人的秘密。我永远只能活在阴影里，像一具没有温度的幽灵，用情报编织着别人的生死命运。",vec:[2,1,4,5,3,2,4,2]},
-    {name:"奇门匠师",desc:"精通机关，巧思御敌",newDesc:"铁锤叮当，火星四溅，冰冷的机关里藏着我一生的骄傲与执念。世人皆迷信绝世武功，却不知我手中巧夺天工的秘器，同样能掌控苍生的生死。",vec:[3,2,4,5,3,2,4,2]},
-    {name:"古道游侠",desc:"漂泊四方，无门无派",newDesc:"马蹄踏碎了夕阳，前路永远在没有尽头的远方。我生来便是为了流浪，不贪恋温柔乡，也不问归处在何方，江湖便是天地间唯一的故乡。",vec:[4,3,2,3,5,3,2,5]},
-    {name:"逍遥客",desc:"今朝有酒，随性洒脱",newDesc:"今朝有酒今朝醉，管他明日洪水滔天，这世间最痛快的事不过大梦一场。别拿那些条条框框来束缚我，一壶烈酒、一柄长剑，我就是天地间最自由的魂。",vec:[4,3,4,3,2,3,2,5]},
-    {name:"山水隐者",desc:"寄情山水，远离喧嚣",newDesc:"深山里的竹涛听久了，便觉得尘世的纷争不过是一场幻梦。我早已厌倦了刀光剑影，只想守着一炉清茶，在静谧的岁月里看云卷云舒，自得其乐。",vec:[2,3,1,2,2,2,4,5]},
-    {name:"商贾豪侠",desc:"手握财帛，互通江湖",newDesc:"金银财宝不过是穿肠毒药，但在这个乱世，它们却是通往生路的桥梁。我用信誉和筹码交织成一张无形的大网，在刀光剑影里护住一方商路太平。",vec:[3,3,3,4,5,2,4,2]},
-    {name:"守正门人",desc:"恪守门规，尊师重道",newDesc:"宗门牌匾下的香火燃了百年，每一代人都将规矩刻进骨血。纵然前路已是风雨飘摇，身为执剑人，我便要用残存的半条命，护住身后的传承。",vec:[3,4,2,2,5,4,5,2]},
-    {name:"镇关守将",desc:"镇守隘口，职责至上",newDesc:"战马嘶鸣，长枪染血，我站在这座孤城的高墙上，身后便是万家灯火。纵然城破人亡，我也要用累累白骨筑起一道铁壁，绝不让外敌前进一步。",vec:[4,4,3,2,5,5,5,2]},
-    {name:"杏林医仙",desc:"手握仁心，悬壶济世",newDesc:"这世上多的是求而不得的苦命人，我救得了他们的命，却医不心头残缺的疤。药草无情，可若能换得一寸人间安宁，这一身医术便没有白费。",vec:[3,5,1,3,4,4,3,3]},
-    {name:"毒谷主人",desc:"精通毒术，善恶随心",newDesc:"他们都说我是杀人不眨眼的魔头，却不知人心有时比剧毒还要狠戾三分。我只想守着我的百草毒虫，人不犯我，我自清高；人若犯我，百倍奉还。",vec:[3,2,5,4,2,3,3,3]},
-    {name:"魔教护法",desc:"不循正道，独树一帜",newDesc:"世人眼中的正邪，不过是强者随口定义的虚伪面具罢了。我偏要撕碎这虚伪的枷锁，按自己的心意活个痛快，哪怕遗臭万年也绝不向世俗低头。",vec:[4,3,5,3,3,4,2,3]},
-    {name:"江湖共主",desc:"一统江湖，定乾坤",newDesc:"坐在这个至高无上的位置上，放眼望去，才发现高处不胜寒。既然命运把我推到了风口浪尖，我便要一言定乾坤，让这整个江湖都为之颤抖。",vec:[5,2,5,4,4,5,5,2]}
-  ];
+    // 18个精简后的黄金角色，图鉴与结果完全同步江南风独白
+    const resultList = [
+      {name:"赤心侠士",desc:"一腔赤诚，道义为先",newDesc:"风雪压城时，总要有人把滚烫的脊梁挺直。我不求青史留名，只愿这人间还有公道在，哪怕前方是刀山火海，这双拳也绝不肯轻易放下。",vec:[5,5,1,2,4,5,2,3]},
+      {name:"凌云少侠",desc:"意气风发，初生牛犊",newDesc:"少年人的胸膛里，永远烧着一把烧不尽的炽烈火焰。别笑我不知天高地厚，哪怕撞得粉身碎骨，我也要凭这双铁拳，去撕开这沉闷的江湖。",vec:[5,5,4,3,3,4,2,3]},
+      {name:"折梅剑客",desc:"踏雪寻梅，剑气带香",newDesc:"长剑出鞘如龙吟，斩断的从不是恩怨，而是这世道强加的枷锁。我只愿做一缕抓不住的清风，携一壶烈酒，在无尽的长夜里独自快意恩仇。",vec:[4,4,2,3,4,4,3,4]},
+      {name:"独行刀客",desc:"独来独往，刀斩是非",newDesc:"冷月如霜，孤影相随，我向来习惯了黑暗里的刀光血影。不需要同伴的温存，也不需要旁人的理解，所有的恩怨是非，皆用手中的刀做个了断。",vec:[4,2,5,3,3,4,3,2]},
+      {name:"玉面军师",desc:"擅长布局，运筹帷幄",newDesc:"羽扇轻扬，谈笑间樯橹灰飞烟灭，运筹帷幄才是最让人着迷的杀局。我不需要亲自挥刀冲锋，只要用胸中沟壑，便能轻易搅动这天下的风云变幻。",vec:[3,2,4,5,3,3,4,2]},
+      {name:"慎思谋士",desc:"心思细腻，三思而行",newDesc:"棋盘之上，落子无悔，每一步算计都是为了在乱世中求得一线生机。我不信天命，只信人心的筹谋，在波诡云谲的局里，唯有谨慎方能活到最后。",vec:[2,2,3,5,3,2,5,2]},
+      {name:"情报暗探",desc:"游走各方，洞悉秘闻",newDesc:"烛影摇曳的暗室里，我听到了这个江湖最不可告人的秘密。我永远只能活在阴影里，像一具没有温度的幽灵，用情报编织着别人的生死命运。",vec:[2,1,4,5,3,2,4,2]},
+      {name:"奇门匠师",desc:"精通机关，巧思御敌",newDesc:"铁锤叮当，火星四溅，冰冷的机关里藏着我一生的骄傲与执念。世人皆迷信绝世武功，却不知我手中巧夺天工的秘器，同样能掌控苍生的生死。",vec:[3,2,4,5,3,2,4,2]},
+      {name:"古道游侠",desc:"漂泊四方，无门无派",newDesc:"马蹄踏碎了夕阳，前路永远在没有尽头的远方。我生来便是为了流浪，不贪恋温柔乡，也不问归处在何方，江湖便是天地间唯一的故乡。",vec:[4,3,2,3,5,3,2,5]},
+      {name:"逍遥客",desc:"今朝有酒，随性洒脱",newDesc:"今朝有酒今朝醉，管他明日洪水滔天，这世间最痛快的事不过大梦一场。别拿那些条条框框来束缚我，一壶烈酒、一柄长剑，我就是天地间最自由的魂。",vec:[4,3,4,3,2,3,2,5]},
+      {name:"山水隐者",desc:"寄情山水，远离喧嚣",newDesc:"深山里的竹涛听久了，便觉得尘世的纷争不过是一场幻梦。我早已厌倦了刀光剑影，只想守着一炉清茶，在静谧的岁月里看云卷云舒，自得其乐。",vec:[2,3,1,2,2,2,4,5]},
+      {name:"商贾豪侠",desc:"手握财帛，互通江湖",newDesc:"金银财宝不过是穿肠毒药，但在这个乱世，它们却是通往生路的桥梁。我用信誉和筹码交织成一张无形的大网，在刀光剑影里护住一方商路太平。",vec:[3,3,3,4,5,2,4,2]},
+      {name:"守正门人",desc:"恪守门规，尊师重道",newDesc:"宗门牌匾下的香火燃了百年，每一代人都将规矩刻进骨血。纵然前路已是风雨飘摇，身为执剑人，我便要用残存的半条命，护住身后的传承。",vec:[3,4,2,2,5,4,5,2]},
+      {name:"镇关守将",desc:"镇守隘口，职责至上",newDesc:"战马嘶鸣，长枪染血，我站在这座孤城的高墙上，身后便是万家灯火。纵然城破人亡，我也要用累累白骨筑起一道铁壁，绝不让外敌前进一步。",vec:[4,4,3,2,5,5,5,2]},
+      {name:"杏林医仙",desc:"手握仁心，悬壶济世",newDesc:"这世上多的是求而不得的苦命人，我救得了他们的命，却医不心头残缺的疤。药草无情，可若能换得一寸人间安宁，这一身医术便没有白费。",vec:[3,5,1,3,4,4,3,3]},
+      {name:"毒谷主人",desc:"精通毒术，善恶随心",newDesc:"他们都说我是杀人不眨眼的魔头，却不知人心有时比剧毒还要狠戾三分。我只想守着我的百草毒虫，人不犯我，我自清高；人若犯我，百倍奉还。",vec:[3,2,5,4,2,3,3,3]},
+      {name:"魔教护法",desc:"不循正道，独树一帜",newDesc:"世人眼中的正邪，不过是强者随口定义的虚伪面具罢了。我偏要撕碎这虚伪的枷锁，按自己的心意活个痛快，哪怕遗臭万年也绝不向世俗低头。",vec:[4,3,5,3,3,4,2,3]},
+      {name:"江湖共主",desc:"一统江湖，定乾坤",newDesc:"坐在这个至高无上的位置上，放眼望去，才发现高处不胜寒。既然命运把我推到了风口浪尖，我便要一言定乾坤，让这整个江湖都为之颤抖。",vec:[5,2,5,4,4,5,5,2]}
+    ];
 
-  let current = 0;
-  let answerList = [];
-  let dimScore = [0,0,0,0,0,0,0,0];
+    let current = 0;
+    let answerList = [];
+    let dimScore = [0,0,0,0,0,0,0,0];
 
-  const home = document.getElementById("home");
-  const qBox = document.getElementById("questionBox");
-  const rBox = document.getElementById("resultBox");
-  const bBox = document.getElementById("bookBox");
-  const qIndex = document.getElementById("qIndex");
-  const qTitle = document.getElementById("qTitle");
-  const optList = document.getElementById("optList");
-  const prevBtn = document.getElementById("prevBtn");
-  const barBox = document.getElementById("barBox");
-  const tagRow = document.getElementById("tagRow");
-  const identityDescDom = document.getElementById("identityDesc");
-  const bookListDom = document.getElementById("bookList");
-  const saveImgBtn = document.getElementById("saveImgBtn");
-  const shareBtn = document.getElementById("shareBtn");
-  const restartBtn = document.getElementById("restartBtn");
-  const toBookBtn = document.getElementById("toBookBtn");
-  const backHomeBtn = document.getElementById("backHomeBtn");
+    const home = document.getElementById("home");
+    const qBox = document.getElementById("questionBox");
+    const rBox = document.getElementById("resultBox");
+    const bBox = document.getElementById("bookBox");
+    const qIndex = document.getElementById("qIndex");
+    const qTitle = document.getElementById("qTitle");
+    const optList = document.getElementById("optList");
+    const prevBtn = document.getElementById("prevBtn");
+    const barBox = document.getElementById("barBox");
+    const tagRow = document.getElementById("tagRow");
+    const identityDescDom = document.getElementById("identityDesc");
+    const bookListDom = document.getElementById("bookList");
+    const saveImgBtn = document.getElementById("saveImgBtn");
+    const shareBtn = document.getElementById("shareBtn");
+    const restartBtn = document.getElementById("restartBtn");
+    const toBookBtn = document.getElementById("toBookBtn");
+    const backHomeBtn = document.getElementById("backHomeBtn");
 
-  // 初始化图鉴卡片，同步展示专属文案
-  bookListDom.innerHTML = "";
-  resultList.forEach(item=>{
-    const card = document.createElement("div");
-    card.className = "book-card";
-    card.innerHTML = `<h3>${item.name}</h3><p>${item.newDesc}</p>`;
-    bookListDom.appendChild(card);
-  })
+    // 初始化图鉴卡片，同步展示专属文案
+    bookListDom.innerHTML = "";
+    resultList.forEach(item=>{
+      const card = document.createElement("div");
+      card.className = "book-card";
+      card.innerHTML = `<h3>${item.name}</h3><p>${item.newDesc}</p>`;
+      bookListDom.appendChild(card);
+    })
 
-  function showPage(p){
-    home.style.display="none";
-    qBox.style.display="none";
-    rBox.style.display="none";
-    bBox.style.display="none";
-    if(p==="home") home.style.display="block";
-    if(p==="q") qBox.style.display="block";
-    if(p==="res") rBox.style.display="block";
-    if(p==="book") bBox.style.display="block";
-  }
-
-  function calcScore(){
-    dimScore = [0,0,0,0,0,0,0,0];
-    for(let s of answerList){
-      if(s) dimScore = dimScore.map((v,i)=>v+s[i]);
+    function showPage(p){
+      home.style.display="none";
+      qBox.style.display="none";
+      rBox.style.display="none";
+      bBox.style.display="none";
+      if(p==="home") home.style.display="block";
+      if(p==="q") qBox.style.display="block";
+      if(p==="res") rBox.style.display="block";
+      if(p==="book") bBox.style.display="block";
     }
-  }
 
-  function renderQ(){
-    const q = questions[current];
-    qIndex.innerText = `第 ${current+1} / ${questions.length} 题`;
-    qTitle.innerText = q.title;
-    optList.innerHTML = "";
-    q.opt.forEach((o,idx)=>{
-      const div = document.createElement("div");
-      div.className = "opt-item";
-      div.innerText = o.txt;
-      div.onclick = ()=>{
-        answerList[current] = o.s;
-        calcScore();
-        current++;
-        if(current >= questions.length){
-          showResult();
-        }else{
-          renderQ();
+    function calcScore(){
+      dimScore = [0,0,0,0,0,0,0,0];
+      for(let s of answerList){
+        if(s) dimScore = dimScore.map((v,i)=>v+s[i]);
+      }
+    }
+
+    function renderQ(){
+      const q = questions[current];
+      qIndex.innerText = `第 ${current+1} / ${questions.length} 题`;
+      qTitle.innerText = q.title;
+      optList.innerHTML = "";
+      q.opt.forEach((o,idx)=>{
+        const div = document.createElement("div");
+        div.className = "opt-item";
+        div.innerText = o.txt;
+        div.onclick = ()=>{
+          answerList[current] = o.s;
+          calcScore();
+          current++;
+          if(current >= questions.length){
+            showResult();
+          }else{
+            renderQ();
+          }
+        }
+        optList.appendChild(div);
+      })
+      prevBtn.style.visibility = current>0 ? "visible":"hidden";
+    }
+
+    prevBtn.onclick = ()=>{
+      if(current <= 0) return;
+      current--;
+      renderQ();
+    }
+
+    // 余弦相似度算法
+    function cosSimilarity(a,b){
+      let dot=0,normA=0,normB=0;
+      for(let i=0;i<8;i++){
+        dot += a[i]*b[i];
+        normA += a[i]*a[i];
+        normB += b[i]*b[i];
+      }
+      if(normA===0||normB===0) return 0;
+      return dot/(Math.sqrt(normA)*Math.sqrt(normB));
+    }
+
+    // 初始化全角色平权补偿权重
+    if(!window._charWeights) {
+      window._charWeights = new Array(resultList.length).fill(1.0);
+    }
+
+    function showResult(){
+      showPage("res");
+      const maxRaw = Math.max(...dimScore);
+      const norm = dimScore.map(v=> maxRaw===0 ? 0 : Math.round(v/maxRaw * 5));
+
+      barBox.innerHTML = "";
+      const row = document.createElement("div");
+      row.className="bar-row";
+      for(let i=0;i<8;i++){
+        const col = document.createElement("div");
+        col.className="bar-col";
+        col.innerHTML = `
+          <div class="bar-bg">
+            <div class="bar-fill" style="height:${norm[i]/dimMax*100}%"></div>
+          </div>
+          <div class="bar-label">${dimNames[i]}</div>
+          <div class="bar-score">${norm[i]}</div>
+        `;
+        row.appendChild(col);
+      }
+      barBox.appendChild(row);
+
+      const rank = [...norm].map((v,i)=>({v,i})).sort((a,b)=>b.v-a.v);
+      tagRow.innerHTML = "";
+      for(let i=0;i<3;i++){
+        const t = document.createElement("span");
+        t.className="tag";
+        t.innerText = dimNames[rank[i].i];
+        tagRow.appendChild(t);
+      }
+
+      // 计算契合度，综合相似度与动态平权权重
+      let simArr = [];
+      for(let j=0;j<resultList.length;j++){
+        const sim = cosSimilarity(norm, resultList[j].vec);
+        const finalScore = (sim + 0.1) * window._charWeights[j];
+        simArr.push({idx:j, score:finalScore});
+      }
+
+      // 取契合度最高的 Top 5 候选人加权抽取
+      simArr.sort((x,y)=>y.score - x.score);
+      const topCandidates = simArr.slice(0, 5);
+
+      let totalWeight = 0;
+      for(let item of topCandidates) totalWeight += item.score;
+      let rnd = Math.random() * totalWeight;
+      let pickIdx = topCandidates[0].idx;
+      for(let item of topCandidates){
+        rnd -= item.score;
+        if(rnd <= 0){
+          pickIdx = item.idx;
+          break;
         }
       }
-      optList.appendChild(div);
-    })
-    prevBtn.style.visibility = current>0 ? "visible":"hidden";
-  }
 
-  prevBtn.onclick = ()=>{
-    if(current <= 0) return;
-    current--;
-    renderQ();
-  }
+      // 更新各角色的平权权重（热门降权，冷门增权）
+      for(let j=0; j<resultList.length; j++){
+        if(j === pickIdx){
+          window._charWeights[j] = Math.max(0.5, window._charWeights[j] * 0.85);
+        } else {
+          window._charWeights[j] = Math.min(3.0, window._charWeights[j] + 0.05);
+        }
+      }
 
-  // 余弦相似度算法
-  function cosSimilarity(a,b){
-    let dot=0,normA=0,normB=0;
-    for(let i=0;i<8;i++){
-      dot += a[i]*b[i];
-      normA += a[i]*a[i];
-      normB += b[i]*b[i];
-    }
-    if(normA===0||normB===0) return 0;
-    return dot/(Math.sqrt(normA)*Math.sqrt(normB));
-  }
-
-  // 初始化全角色平权补偿权重
-  if(!window._charWeights) {
-    window._charWeights = new Array(resultList.length).fill(1.0);
-  }
-
-  function showResult(){
-    showPage("res");
-    const maxRaw = Math.max(...dimScore);
-    const norm = dimScore.map(v=> maxRaw===0 ? 0 : Math.round(v/maxRaw * 5));
-
-    barBox.innerHTML = "";
-    const row = document.createElement("div");
-    row.className="bar-row";
-    for(let i=0;i<8;i++){
-      const col = document.createElement("div");
-      col.className="bar-col";
-      col.innerHTML = `
-        <div class="bar-bg">
-          <div class="bar-fill" style="height:${norm[i]/dimMax*100}%"></div>
-        </div>
-        <div class="bar-label">${dimNames[i]}</div>
-        <div class="bar-score">${norm[i]}</div>
-      `;
-      row.appendChild(col);
-    }
-    barBox.appendChild(row);
-
-    const rank = [...norm].map((v,i)=>({v,i})).sort((a,b)=>b.v-a.v);
-    tagRow.innerHTML = "";
-    for(let i=0;i<3;i++){
-      const t = document.createElement("span");
-      t.className="tag";
-      t.innerText = dimNames[rank[i].i];
-      tagRow.appendChild(t);
+      const res = resultList[pickIdx];
+      document.querySelector(".res-wrap h2").innerText = `你的江湖身份：${res.name}`;
+      identityDescDom.innerText = res.newDesc;
     }
 
-    // 计算契合度，综合相似度与动态平权权重
-    let simArr = [];
-    for(let j=0;j<resultList.length;j++){
-      const sim = cosSimilarity(norm, resultList[j].vec);
-      const finalScore = (sim + 0.1) * window._charWeights[j];
-      simArr.push({idx:j, score:finalScore});
-    }
-
-    // 取契合度最高的 Top 5 候选人加权抽取
-    simArr.sort((x,y)=>y.score - x.score);
-    const topCandidates = simArr.slice(0, 5);
-
-    let totalWeight = 0;
-    for(let item of topCandidates) totalWeight += item.score;
-    let rnd = Math.random() * totalWeight;
-    let pickIdx = topCandidates[0].idx;
-    for(let item of topCandidates){
-      rnd -= item.score;
-      if(rnd <= 0){
-        pickIdx = item.idx;
-        break;
+    saveImgBtn.onclick = async ()=>{
+      try{
+        const canvas = await html2canvas(rBox, {scale:2,useCORS:true});
+        const link = document.createElement("a");
+        link.download = "江湖测试结果.png";
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+      }catch(e){
+        alert("保存失败");
       }
     }
 
-    // 更新各角色的平权权重（热门降权，冷门增权）
-    for(let j=0; j<resultList.length; j++){
-      if(j === pickIdx){
-        window._charWeights[j] = Math.max(0.5, window._charWeights[j] * 0.85);
-      } else {
-        window._charWeights[j] = Math.min(3.0, window._charWeights[j] + 0.05);
+    shareBtn.onclick = async ()=>{
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: '江湖少年身份测试',
+          text: '快来看看你在江湖中是何身份！',
+          url: window.location.href,
+        });
+      } catch (e) {
+        // 用户取消分享时忽略
       }
-    }
-
-    const res = resultList[pickIdx];
-    document.querySelector(".res-wrap h2").innerText = `你的江湖身份：${res.name}`;
-    identityDescDom.innerText = res.newDesc;
-  }
-
-  saveImgBtn.onclick = async ()=>{
-    try{
-      const canvas = await html2canvas(rBox, {scale:2,useCORS:true});
-      const link = document.createElement("a");
-      link.download = "江湖测试结果.png";
-      link.href = canvas.toDataURL("image/png");
-      link.click();
-    }catch(e){
-      alert("保存失败");
+    } else {
+      const url = window.location.href;
+      const input = document.createElement("input");
+      input.value = url;
+      document.body.appendChild(input);
+      input.select();
+      document.execCommand("copy");
+      document.body.removeChild(input);
+      alert("测试链接已复制成功！快去粘贴分享给好友吧~");
     }
   }
 
-  shareBtn.onclick = async ()=>{
-    alert("截图分享结果即可");
-  }
 
-  restartBtn.onclick = ()=>{
-    current=0;
-    answerList=[];
-    dimScore=[0,0,0,0,0,0,0,0];
-    showPage("home");
-  }
+    restartBtn.onclick = ()=>{
+      current=0;
+      answerList=[];
+      dimScore=[0,0,0,0,0,0,0,0];
+      showPage("home");
+    }
 
-  bookBtn.onclick = ()=>showPage("book");
-  toBookBtn.onclick = ()=>showPage("book");
-  backHomeBtn.onclick = ()=>{
-    current=0;
-    answerList=[];
-    dimScore=[0,0,0,0,0,0,0,0];
-    showPage("home");
-  }
+    bookBtn.onclick = ()=>showPage("book");
+    toBookBtn.onclick = ()=>showPage("book");
+    backHomeBtn.onclick = ()=>{
+      current=0;
+      answerList=[];
+      dimScore=[0,0,0,0,0,0,0,0];
+      showPage("home");
+    }
 
-  startBtn.onclick = ()=>{
-    current=0;
-    answerList=[];
-    dimScore=[0,0,0,0,0,0,0,0];
-    showPage("q");
-    renderQ();
-  }
+    startBtn.onclick = ()=>{
+      current=0;
+      answerList=[];
+      dimScore=[0,0,0,0,0,0,0,0];
+      showPage("q");
+      renderQ();
+    }
 </script>
 
 </body>
