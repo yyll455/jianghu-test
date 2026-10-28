@@ -24,7 +24,7 @@
       linear-gradient(180deg, #f4f7f4 0%, #eef3ef 45%, #e6ece6 100%);
   }
 
-  /* 顶部动画区保持不动 */
+  /* 顶部竹林动画 */
   .jianghu-stage {
     position: relative;
     width: 100%;
@@ -273,7 +273,7 @@
     margin-top: 24px;
   }
 
-  /* 结果页不动 */
+  /* 结果页 */
   .res-wrap {
     max-width: 640px;
     margin: 0 auto;
@@ -358,24 +358,16 @@
     color: #2f403b;
   }
 
-  .match-item {
-    padding: 14px 12px;
-    margin: 12px 0;
-    border: 1px solid #c9d9d1;
-    background: rgba(120,150,140,0.03);
-    border-radius: 8px;
-  }
-
-  .match-title {
-    color: #5f746c;
-    font-size: 14px;
-    margin-bottom: 6px;
-  }
-
-  .match-name {
-    font-weight: bold;
-    font-size: 17px;
-    color: #243531;
+  /* 新增：身份描述文本框 */
+  .identity-desc{
+    padding:16px 14px;
+    margin:12px 0 18px;
+    border:1px solid #c9d9d1;
+    background:rgba(255,255,255,0.45);
+    border-radius:10px;
+    line-height:1.75;
+    font-size:15px;
+    color:#334842;
   }
 
   .res-signature {
@@ -394,7 +386,7 @@
     flex-wrap: wrap;
   }
 
-  /* 图鉴页不动 */
+  /* 图鉴页 */
   .book-wrap {
     max-width: 680px;
     margin: 0 auto;
@@ -435,7 +427,7 @@
     margin-top: 30px;
   }
 
-  /* 打赏区不动 */
+  /* 打赏区 */
   .donate-box {
     margin-top: 28px;
     padding: 20px 14px;
@@ -463,11 +455,9 @@
       font-size: 24px;
       letter-spacing: 3px;
     }
-
     .q-title {
       font-size: 20px;
     }
-
     .home-card,
     .q-card {
       padding: 28px 20px;
@@ -686,14 +676,9 @@
   <h2>你的江湖身份：</h2>
   <div class="bar-box" id="barBox"></div>
   <div class="tag-row" id="tagRow"></div>
-  <div class="match-item">
-    <div class="match-title">同行游侠</div>
-    <div class="match-name" id="partner"></div>
-  </div>
-  <div class="match-item">
-    <div class="match-title">神交至友</div>
-    <div class="match-name" id="bosom"></div>
-  </div>
+  <!-- 新增身份描述容器，删除了游侠、挚友模块 -->
+  <div class="identity-desc" id="identityDesc"></div>
+
   <div class="res-signature">
     江湖路远，祝少侠一帆风顺！
   </div>
@@ -755,37 +740,38 @@
     {title:"如果可以改变一桩江湖旧事，你想？",opt:[{txt:"消弭纷争，四海安宁",s:[0,2,0,0,1,2,1,1]},{txt:"铲除奸邪，还江湖清明",s:[1,2,1,1,0,2,1,0]},{txt:"独守一方清净天地",s:[1,1,0,1,0,0,1,2]},{txt:"重整格局，由我执掌",s:[2,0,2,2,0,0,2,0]}]}
   ];
 
+  // 完全使用文档原文，一字未修改
   const resultList = [
-    {name:"赤心侠士",desc:"一腔赤诚，道义为先。你是江湖里最纯粹的行者，不问得失，见难便扶，以本心行走世间。"},
-    {name:"清风剑客",desc:"剑随身走，自在如风。不爱束缚，凭一身剑术快意恩仇，潇洒而不狂妄。"},
-    {name:"杏林医仙",desc:"手握仁心，悬壶济世。你的兵器是药草，救人为先，纷争不沾，温柔却有力量。"},
-    {name:"古道游侠",desc:"漂泊四方，无门无派。踏遍山河，见识无数故事，重诺守信，随性而坦荡。"},
-    {name:"守正门人",desc:"恪守门规，尊师重道。信奉正道秩序，愿守护门派传承，稳重可靠。"},
-    {name:"凌云少侠",desc:"意气风发，初生牛犊。心怀理想，敢闯敢拼，一腔热血，未来拥有无限可能。"},
-    {name:"山水隐者",desc:"寄情山水，远离喧嚣。看透江湖纷扰，偏爱安静独处，不追名逐利。"},
-    {name:"温雅儒侠",desc:"文武兼修，温文藏锋。以诗书养气，以剑术护身，进退有度，谦和有礼。"},
-    {name:"独行刀客",desc:"独来独往，刀斩是非。不喜抱团，恩怨自己了结，沉默但立场分明。"},
-    {name:"闲云散人",desc:"万事随缘，不争不抢。对权势秘籍皆淡然，只求日子安稳自在。"},
-    {name:"慎思谋士",desc:"心思细腻，三思而行。遇事不冲动，习惯权衡利弊，稳妥求全。"},
-    {name:"情报暗探",desc:"游走各方，洞悉秘闻。善于观察，消息灵通，藏于暗处，很少引人注目。"},
-    {name:"守山长老",desc:"看淡纷争，守护一方。不喜扩张，只愿护住自己在意的人和土地。"},
-    {name:"奇门匠师",desc:"精通机关巧术，匠心独运。不靠蛮力，以巧思取胜，低调又强大。"},
-    {name:"玉面军师",desc:"擅长布局，运筹帷幄。不喜欢亲自厮杀，擅长谋划，引导局势走向。"},
-    {name:"逍遥客",desc:"今朝有酒今朝醉，不爱长久谋划。享受当下，随性洒脱，不喜被人捆绑。"},
-    {name:"毒谷主人",desc:"精通毒术，善恶随心。不主动害人，但谁若冒犯，自有自保手段。"},
-    {name:"影卫",desc:"隐于阴影，听命行事。隐忍克制，执行力极强，情绪很少外露。"},
-    {name:"商贾豪侠",desc:"手握财帛，互通江湖。以财力游走各派，重信誉，也懂得利益交换。"},
-    {name:"镇关守将",desc:"镇守隘口，职责至上。把守护疆土、关卡安宁放在第一位，沉稳坚毅。"},
-    {name:"诡策客",desc:"善用奇谋，不循常理。思路跳脱，常常出人意料，是一把双刃剑。"},
-    {name:"魔教护法",desc:"不循世俗正道，自有一套准则。恩怨分明，不服条条框框的束缚。"},
-    {name:"夺势枭雄",desc:"野心藏于骨，不甘屈居人下。目标清晰，愿意为目标步步筹谋。"},
-    {name:"乱世霸主",desc:"胸怀宏图，欲掌风云。有统领众人的魄力，敢打破旧格局。"},
-    {name:"修罗武尊",desc:"信奉力量，以武证道。痴迷武道巅峰，强者为尊，敬畏很少。"},
-    {name:"阴谋阁主",desc:"擅长暗流博弈，不动声色收揽筹码。城府深沉，很少展露真心。"},
-    {name:"夺鼎枭雄",desc:"不甘居于人下，伺机而动，乱世之中伺机夺取话语权。"},
-    {name:"独霸宗主",desc:"执掌一派，说一不二。威严深重，门下之人皆听号令。"},
-    {name:"万鬼楼主",desc:"行事孤绝，不在乎世间评价。手段凌厉，旁人不敢轻易招惹。"},
-    {name:"江湖共主",desc:"有一统江湖的气魄，能压服各方势力，一言可搅动天下风云。"}
+    {name:"赤心侠士",desc:"一腔赤诚，道义为先。你是江湖里最纯粹的行者，不问得失，见难便扶，以本心行走世间。",newDesc:"风雪压城时，总要有人把滚烫的脊梁挺直。我不求青史留名，只愿这人间还有公道在，哪怕前方是刀山火海，这双拳也绝不肯轻易放下。"},
+    {name:"折梅剑客",desc:"踏雪寻梅，剑气带香，有着江南少侠独有的温润与傲骨。我不为求名，只为寻一处心中的雪意，剑锋所指之处，皆是快意恩仇的少年风流。",newDesc:"踏雪寻梅，剑气带香，有着江南少侠独有的温润与傲骨。我不为求名，只为寻一处心中的雪意，剑锋所指之处，皆是快意恩仇的少年风流。"},
+    {name:"杏林医仙",desc:"手握仁心，悬壶济世。你的兵器是药草，救人为先，纷争不沾，温柔却有力量。",newDesc:"这世上多的是求而不得的苦命人，我救得了他们的命，却医不心头残缺的疤。药草无情，可若能换得一寸人间安宁，这一身医术便没有白费。"},
+    {name:"古道游侠",desc:"漂泊四方，无门无派。踏遍山河，见识无数故事，重诺守信，随性而坦荡。",newDesc:"马蹄踏碎了夕阳，前路永远在没有尽头的远方。我生来便是为了流浪，不贪恋温柔乡，也不问归处在何方，江湖便是天地间唯一的故乡。"},
+    {name:"守正门人",desc:"恪守门规，尊师重道。信奉正道秩序，愿守护门派传承，稳重可靠。",newDesc:"宗门牌匾下的香火燃了百年，每一代人都将规矩刻进骨血。纵然前路已是风雨飘摇，身为执剑人，我便要用残存的半条命，护住身后的传承。"},
+    {name:"凌云少侠",desc:"意气风发，初生牛犊。心怀理想，敢闯敢拼，一腔热血，未来拥有无限可能。",newDesc:"少侠的胸膛里，永远烧着一把烧不尽的炽烈火焰。别笑我不知天高地厚，哪怕撞得粉身碎骨，我也要凭这双铁拳，去撕开这沉闷的江湖。"},
+    {name:"山水隐者",desc:"寄情山水，远离喧嚣。看透江湖纷扰，偏爱安静独处，不追名逐利。",newDesc:"深山里的竹涛听久了，便觉得尘世的纷争不过是一场幻梦。我早已厌倦了刀光剑影，只想守着一炉清茶，在静谧的岁月里看云卷云舒，自得其乐。"},
+    {name:"温雅儒侠",desc:"文武兼修，温文藏锋。以诗书养气，以剑术护身，进退有度，谦和有礼。",newDesc:"折扇轻摇，谈笑间风骨凛然，读书人也是敢拔剑杀人的。别把温和当成软弱，我用诗书养出的浩然之气，在危难关头足以为天下人撑起一片天。"},
+    {name:"独行刀客",desc:"独来独往，刀斩是非。不喜抱团，恩怨自己了结，沉默但立场分明。",newDesc:"冷月如霜，孤影相随，我向来习惯了黑暗里的刀光血影。不需要同伴的温存，也不需要旁人的理解，所有的恩怨是非，皆用手中的刀做个了断。"},
+    {name:"闲云散人",desc:"万事随缘，不争不抢。对权势秘籍皆淡然，只求日子安稳自在。",newDesc:"世人争得头破血流的绝世秘籍，在我眼里不过是一场过眼云烟。不求权倾天下，只愿偷得浮生半日闲，活得自在洒脱，方不辜负这匆匆一生。"},
+    {name:"慎思谋士",desc:"心思细腻，三思而行。遇事不冲动，习惯权衡利弊，稳妥求全。",newDesc:"棋盘之上，落子无悔，每一步算计都是为了在乱世中求得一线生机。我不信天命，只信人心的筹谋，在波诡云谲的局里，唯有谨慎方能活到最后。"},
+    {name:"情报暗探",desc:"游走各方，洞悉秘闻。善于观察，消息灵通，藏于暗处，很少引人注目。",newDesc:"烛影摇曳的暗室里，我听到了这个江湖最不可告人的秘密。我永远只能活在阴影里，像一具没有温度的幽灵，用情报编织着别人的生死命运。"},
+    {name:"守山长老",desc:"看淡纷争，守护一方。不喜扩张，只愿护住自己在意的人和土地。",newDesc:"岁月斑驳了山门前的石阶，我老了，却依然是这座山最后的一道防线。谁也休想踏过这里半步，只要我还有一口气在，这片故土便不容外人践踏。"},
+    {name:"奇门匠师",desc:"精通机关巧术，匠心独运。不靠蛮力，以巧思取胜，低调又强大。",newDesc:"铁锤叮当，火星四溅，冰冷的机关里藏着我一生的骄傲与执念。世人皆迷信绝世武功，却不知我手中巧夺天工的秘器，同样能掌控苍生的生死。"},
+    {name:"玉面军师",desc:"擅长布局，运筹帷幄。不喜欢亲自厮杀，擅长谋划，引导局势走向。",newDesc:"羽扇轻扬，谈笑间樯橹灰飞烟灭，运筹帷幄才是最让人着迷的杀局。我不需要亲自挥刀冲锋，只要用胸中沟壑，便能轻易搅动这天下的风云变幻。"},
+    {name:"逍遥客",desc:"今朝有酒今朝醉，不爱长久谋划。享受当下，随性洒脱，不喜被人捆绑。",newDesc:"今朝有酒今朝醉，管他明日洪水滔天，这世间最痛快的事不过大梦一场。别拿那些条条框框来束缚我，一壶烈酒、一柄长剑，我就是天地间最自由的魂。"},
+    {name:"毒谷主人",desc:"精通毒术，善恶随心。不主动害人，但谁若冒犯，自有自保手段。",newDesc:"他们都说我是杀人不眨眼的魔头，却不知人心有时比剧毒还要狠戾三分。我只想守着我的百草毒虫，人不犯我，我自清高；人若犯我，百倍奉还。"},
+    {name:"影卫",desc:"隐于阴影，听命行事。隐忍克制，执行力极强，情绪很少外露。",newDesc:"黑暗是我的铠甲，沉默是我的宿命，主人的意志便是我存在的唯一意义。我没有名字，没有喜怒哀乐，只有在出鞘的那一瞬间，才算真正活过。"},
+    {name:"商贾豪侠",desc:"手握财帛，互通江湖。以财力游走各派，重信誉，也懂得利益交换。",newDesc:"金银财宝不过是穿肠毒药，但在这个乱世，它们却是通往生路的桥梁。我用信誉和筹码交织成一张无形的大网，在刀光剑影里护住一方商路太平。"},
+    {name:"镇关守将",desc:"镇守隘口，职责至上。把守护疆土、关卡安宁放在第一位，沉稳坚毅。",newDesc:"战马嘶鸣，长枪染血，我站在这座孤城的高墙上，身后便是万家灯火。纵然城破人亡，我也要用累累白骨筑起一道铁壁，绝不让外敌前进一步。"},
+    {name:"诡策客",desc:"善用奇谋，不循常理。思路跳脱，常常出人意料，是一把双刃剑。",newDesc:"常规的规矩不过是用来打破的，出其不意的奇谋才是一切的破局之匙。世人笑我行事乖张离经叛道，可他们永远猜不到我下一步究竟落向何方。"},
+    {name:"魔教护法",desc:"不循世俗正道，自有一套准则。恩怨分明，不服条条框框的束缚。",newDesc:"世人眼中的正邪，不过是强者随口定义的虚伪面具罢了。我偏要撕碎这虚伪的枷锁，按自己的心意活个痛快，哪怕遗臭万年也绝不向世俗低头。"},
+    {name:"夺势枭雄",desc:"野心藏于骨，不甘屈居人下。目标清晰，愿意为目标步步筹谋。",newDesc:"懦弱的人才在角落里瑟瑟发抖，而强者永远踩着尸骨向上攀爬。我不甘心屈居于任何人之下，哪怕双手沾满鲜血，我也要亲手摘下至高的王座。"},
+    {name:"乱世霸主",desc:"胸怀宏图，欲掌风云。有统领众人的魄力，敢打破旧格局。",newDesc:"旧的秩序已经腐朽不堪，那就由我来亲手砸碎它，建立一个新的盛世。男儿生于乱世，当手握百万雄兵，扫平六合八荒，让整个天下俯首称臣。"},
+    {name:"修罗武尊",desc:"信奉力量，以武证道。痴迷武道巅峰，强者为尊，敬畏很少。",newDesc:"拳头才是这个江湖唯一的真理，弱肉强食，强者才有资格主宰一切。我穷尽毕生追求武道的极致，不为什么大义，只为站在群山之巅俯瞰众生。"},
+    {name:"阴谋阁主",desc:"擅长暗流博弈，不动声色收揽筹码。城府深沉，很少展露真心。",newDesc:"暗流汹涌的棋局里，每一个人都不过是我手中的一颗棋子而已。我隐匿在最深的黑暗中，不动声色地收割着所有的筹码，静静等待最后的收网。"},
+    {name:"夺鼎枭雄",desc:"不甘居于人下，伺机而动，乱世之中伺机夺取话语权。",newDesc:"时势造英雄，风云变幻的乱世正是我们大展身手的最好舞台。我不信什么天命所归，只要给够我时间与契机，这天下的最高权柄便迟早落入我手中。"},
+    {name:"独霸宗主",desc:"执掌一派，说一不二。威严深重，门下之人皆听号令。",newDesc:"诺大的宗门压在我一人肩上，我的一言一行便是不可违抗的铁律。为了门派的荣耀与存亡，哪怕背负暴君的骂名，我也要用雷霆手段肃清一切。"},
+    {name:"万鬼楼主",desc:"行事孤绝，不在乎世间评价。手段凌厉，旁人不敢轻易招惹。",newDesc:"哭声与哀嚎是这个世界上最动听的音乐，我游走于生死边缘，从不在乎世人的唾骂。既然这世道本就冰冷残酷，那就让我做最冷血的执刀人。"},
+    {name:"江湖共主",desc:"有一统江湖的气魄，能压服各方势力，一言可搅动天下风云。",newDesc:"坐在这个至高无上的位置上，放眼望去，才发现高处不胜寒。既然命运把我推到了风口浪尖，我便要一言定乾坤，让这整个江湖都为之颤抖。"}
   ];
 
   const matchPool = [
@@ -810,8 +796,7 @@
   const prevBtn = document.getElementById("prevBtn");
   const barBox = document.getElementById("barBox");
   const tagRow = document.getElementById("tagRow");
-  const partnerDom = document.getElementById("partner");
-  const bosomDom = document.getElementById("bosom");
+  const identityDescDom = document.getElementById("identityDesc");
   const bookListDom = document.getElementById("bookList");
   const saveImgBtn = document.getElementById("saveImgBtn");
   const shareBtn = document.getElementById("shareBtn");
@@ -819,81 +804,81 @@
   const toBookBtn = document.getElementById("toBookBtn");
   const backHomeBtn = document.getElementById("backHomeBtn");
 
-  resultList.forEach(item => {
+  resultList.forEach(item=>{
     const card = document.createElement("div");
     card.className = "book-card";
     card.innerHTML = `<h3>${item.name}</h3><p>${item.desc}</p>`;
     bookListDom.appendChild(card);
-  });
+  })
 
-  function showPage(p) {
-    home.style.display = "none";
-    qBox.style.display = "none";
-    rBox.style.display = "none";
-    bBox.style.display = "none";
-    if (p === "home") home.style.display = "block";
-    if (p === "q") qBox.style.display = "block";
-    if (p === "res") rBox.style.display = "block";
-    if (p === "book") bBox.style.display = "block";
+  function showPage(p){
+    home.style.display="none";
+    qBox.style.display="none";
+    rBox.style.display="none";
+    bBox.style.display="none";
+    if(p==="home") home.style.display="block";
+    if(p==="q") qBox.style.display="block";
+    if(p==="res") rBox.style.display="block";
+    if(p==="book") bBox.style.display="block";
   }
 
-  function calcScore() {
+  function calcScore(){
     dimScore = [0,0,0,0,0,0,0,0];
-    for (let s of answerList) {
-      if (s) dimScore = dimScore.map((v, i) => v + s[i]);
+    for(let s of answerList){
+      if(s) dimScore = dimScore.map((v,i)=>v+s[i]);
     }
   }
 
-  function renderQ() {
+  function renderQ(){
     const q = questions[current];
-    qIndex.innerText = `第 ${current + 1} / ${questions.length} 题`;
+    qIndex.innerText = `第 ${current+1} / ${questions.length} 题`;
     qTitle.innerText = q.title;
     optList.innerHTML = "";
-    q.opt.forEach((o, idx) => {
+    q.opt.forEach((o,idx)=>{
       const div = document.createElement("div");
       div.className = "opt-item";
       div.innerText = o.txt;
-      div.onclick = () => {
+      div.onclick = ()=>{
         answerList[current] = o.s;
         calcScore();
         current++;
-        if (current >= questions.length) {
+        if(current >= questions.length){
           showResult();
-        } else {
+        }else{
           renderQ();
         }
-      };
+      }
       optList.appendChild(div);
-    });
-    prevBtn.style.visibility = current > 0 ? "visible" : "hidden";
+    })
+    prevBtn.style.visibility = current>0 ? "visible":"hidden";
   }
 
-  prevBtn.onclick = () => {
-    if (current <= 0) return;
+  prevBtn.onclick = ()=>{
+    if(current <= 0) return;
     current--;
     renderQ();
-  };
+  }
 
-  function getDist(a, b) {
-    let sum = 0;
-    for (let i = 0; i < 8; i++) sum += (a[i] - b[i]) * (a[i] - b[i]);
+  function getDist(a,b){
+    let sum=0;
+    for(let i=0;i<8;i++) sum += (a[i]-b[i])*(a[i]-b[i]);
     return sum;
   }
 
-  function showResult() {
+  function showResult(){
     showPage("res");
     const maxRaw = Math.max(...dimScore);
-    const norm = dimScore.map(v => maxRaw === 0 ? 0 : Math.round(v / maxRaw * 5));
+    const norm = dimScore.map(v=> maxRaw===0 ? 0 : Math.round(v/maxRaw * 5));
 
     barBox.innerHTML = "";
     const row = document.createElement("div");
-    row.className = "bar-row";
-    for (let i = 0; i < 8; i++) {
+    row.className="bar-row";
+    for(let i=0;i<8;i++){
       const col = document.createElement("div");
-      col.className = "bar-col";
+      col.className="bar-col";
       col.innerHTML = `
         <div class="bar-bg">
-          <div class="bar-fill" style="height:${norm[i] / dimMax * 100}%"></div>
+          <div class="bar-fill" style="height:${norm[i]/dimMax*100}%"></div>
         </div>
         <div class="bar-label">${dimNames[i]}</div>
         <div class="bar-score">${norm[i]}</div>
@@ -902,88 +887,80 @@
     }
     barBox.appendChild(row);
 
-    const rank = [...norm].map((v, i) => ({v, i})).sort((a, b) => b.v - a.v);
+    const rank = [...norm].map((v,i)=>({v,i})).sort((a,b)=>b.v-a.v);
     tagRow.innerHTML = "";
-    for (let i = 0; i < 3; i++) {
+    for(let i=0;i<3;i++){
       const t = document.createElement("span");
-      t.className = "tag";
+      t.className="tag";
       t.innerText = dimNames[rank[i].i];
       tagRow.appendChild(t);
     }
 
-    let best = matchPool[0];
-    let minD = getDist(norm, matchPool[0].dim);
-    for (let m of matchPool) {
-      const d = getDist(norm, m.dim);
-      if (d < minD) {
-        minD = d;
-        best = m;
-      }
-    }
-
-    partnerDom.innerText = best.partner;
-    bosomDom.innerText = best.bosom;
-
-    const totalRaw = dimScore.reduce((a, b) => a + b, 0);
-    const idx = Math.min(Math.floor((totalRaw - 30) / 3), 29);
+    const totalRaw = dimScore.reduce((a,b)=>a+b,0);
+    const idx = Math.min(Math.floor((totalRaw - 30)/3),29);
     const res = resultList[idx];
     document.querySelector(".res-wrap h2").innerText = `你的江湖身份：${res.name}`;
+    // 渲染文档原始独白
+    identityDescDom.innerText = res.newDesc;
   }
 
-  saveImgBtn.onclick = async () => {
-    try {
-      const canvas = await html2canvas(rBox, {scale: 2, useCORS: true});
+  saveImgBtn.onclick = async ()=>{
+    try{
+      const canvas = await html2canvas(rBox, {scale:2,useCORS:true});
       const link = document.createElement("a");
       link.download = "江湖测试结果.png";
       link.href = canvas.toDataURL("image/png");
       link.click();
-    } catch (e) {
+    }catch(e){
       alert("保存失败，请换浏览器重试");
     }
-  };
+  }
 
-  shareBtn.onclick = async () => {
+  shareBtn.onclick = async ()=>{
     const shareUrl = location.href;
     const shareTitle = "江湖少年身份测试";
     const shareText = "来测测你是江湖里哪一位少年！";
-    if (navigator.share) {
-      try {
-        await navigator.share({title: shareTitle, text: shareText, url: shareUrl});
-      } catch (err) {
-        try {
+    if(navigator.share){
+      try{
+        await navigator.share({
+          title: shareTitle,
+          text: shareText,
+          url: shareUrl
+        })
+      }catch(err){
+        try{
           await navigator.clipboard.writeText(shareUrl);
           alert("链接已复制，发给好友！");
-        } catch (e) {
+        }catch(e){
           alert("复制失败，请手动复制地址栏链接");
         }
       }
-    } else {
-      try {
+    }else{
+      try{
         await navigator.clipboard.writeText(shareUrl);
         alert("链接已复制，发给好友！");
-      } catch (e) {
+      }catch(e){
         alert("复制失败，请手动复制地址栏链接");
       }
     }
-  };
+  }
 
-  startBtn.onclick = () => {
-    current = 0;
-    answerList = [];
-    dimScore = [0,0,0,0,0,0,0,0];
+  startBtn.onclick = ()=>{
+    current=0;
+    answerList=[];
+    dimScore=[0,0,0,0,0,0,0,0];
     showPage("q");
     renderQ();
-  };
-
-  bookBtn.onclick = () => showPage("book");
-  restartBtn.onclick = () => {
-    current = 0;
-    answerList = [];
-    dimScore = [0,0,0,0,0,0,0,0];
+  }
+  bookBtn.onclick = ()=>showPage("book");
+  restartBtn.onclick = ()=>{
+    current=0;
+    answerList=[];
+    dimScore=[0,0,0,0,0,0,0,0];
     showPage("home");
-  };
-  toBookBtn.onclick = () => showPage("book");
-  backHomeBtn.onclick = () => showPage("home");
+  }
+  toBookBtn.onclick = ()=>showPage("book");
+  backHomeBtn.onclick = ()=>showPage("home");
 </script>
 
 </body>
