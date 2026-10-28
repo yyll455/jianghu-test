@@ -1,0 +1,900 @@
+<html>
+<head>
+<title>jh.html</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #d5b778;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bababa;}
+.s3 { color: #6aab73;}
+.s4 { color: #7a7e85;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+jh.html</font>
+</center></td></tr></table>
+<pre><span class="s0">&lt;!DOCTYPE </span><span class="s2">html</span><span class="s0">&gt;</span>
+<span class="s0">&lt;html </span><span class="s2">lang</span><span class="s3">=&quot;zh-CN&quot;</span><span class="s0">&gt;</span>
+<span class="s0">&lt;head&gt;</span>
+    <span class="s0">&lt;meta </span><span class="s2">charset</span><span class="s3">=&quot;UTF-8&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;meta </span><span class="s2">name</span><span class="s3">=&quot;viewport&quot; </span><span class="s2">content</span><span class="s3">=&quot;width=device-width, initial-scale=1.0&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;title&gt;</span><span class="s1">江湖少年身份测试</span><span class="s0">&lt;/title&gt;</span>
+    <span class="s0">&lt;script </span><span class="s2">src</span><span class="s3">=&quot;https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js&quot;</span><span class="s0">&gt;&lt;/script&gt;</span>
+    <span class="s0">&lt;style&gt;</span>
+        <span class="s1">*{</span>
+          <span class="s1">margin: 0;</span>
+          <span class="s1">padding: 0;</span>
+          <span class="s1">box-sizing: border-box;</span>
+          <span class="s1">font-family: system-ui, &quot;SimSun&quot;, serif;</span>
+        <span class="s1">}</span>
+        <span class="s1">body{</span>
+          <span class="s1">text-align: center;</span>
+          <span class="s1">padding: 30px 20px;</span>
+          <span class="s1">background:</span>
+            <span class="s1">radial-gradient(circle at 20% 10%, rgba(130, 160, 150, 0.10), transparent 28%),</span>
+            <span class="s1">radial-gradient(circle at 80% 20%, rgba(110, 140, 130, 0.07), transparent 24%),</span>
+            <span class="s1">linear-gradient(170deg, #f4f7f4 0%, #eef3ef 50%, #e7ede7 100%);</span>
+          <span class="s1">color: #2f403b;</span>
+          <span class="s1">min-height: 100vh;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">/* 水墨江湖动画区域 */</span>
+        <span class="s1">.jianghu-stage {</span>
+          <span class="s1">position: relative;</span>
+          <span class="s1">width: 100%;</span>
+          <span class="s1">max-width: 700px;</span>
+          <span class="s1">height: 260px;</span>
+          <span class="s1">margin: 0 auto 28px auto;</span>
+          <span class="s1">overflow: hidden;</span>
+          <span class="s1">border-radius: 12px;</span>
+          <span class="s1">box-shadow: 0 8px 24px rgba(40, 60, 55, 0.18);</span>
+        <span class="s1">}</span>
+        <span class="s1">.jianghu-bg {</span>
+          <span class="s1">position: absolute;</span>
+          <span class="s1">inset: 0;</span>
+          <span class="s1">z-index: 1;</span>
+          <span class="s1">animation: bg-push 14s ease-in-out infinite alternate;</span>
+        <span class="s1">}</span>
+        <span class="s1">.jianghu-bg img {</span>
+          <span class="s1">width: 100%;</span>
+          <span class="s1">height: 100%;</span>
+          <span class="s1">object-fit: cover;</span>
+          <span class="s1">display: block;</span>
+        <span class="s1">}</span>
+        <span class="s1">@keyframes bg-push {</span>
+          <span class="s1">0% { transform: scale(1) translateX(0); }</span>
+          <span class="s1">100% { transform: scale(1.08) translateX(-1%); }</span>
+        <span class="s1">}</span>
+        <span class="s1">.fog {</span>
+          <span class="s1">position: absolute;</span>
+          <span class="s1">top: 0;</span>
+          <span class="s1">bottom: 0;</span>
+          <span class="s1">width: 200%;</span>
+          <span class="s1">background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.30) 50%, rgba(255,255,255,0) 100%);</span>
+          <span class="s1">z-index: 2;</span>
+          <span class="s1">pointer-events: none;</span>
+        <span class="s1">}</span>
+        <span class="s1">.fog-1 { left: -100%; animation: fog-move 12s linear infinite; }</span>
+        <span class="s1">.fog-2 { left: -100%; animation: fog-move 18s linear infinite; animation-delay: -6s; opacity:0.4; }</span>
+        <span class="s1">.fog-3 { left: -100%; animation: fog-move 22s linear infinite; animation-delay: -10s; opacity:0.2; }</span>
+        <span class="s1">@keyframes fog-move {</span>
+          <span class="s1">0% { transform: translateX(0); }</span>
+          <span class="s1">100% { transform: translateX(50%); }</span>
+        <span class="s1">}</span>
+        <span class="s1">.leaf {</span>
+          <span class="s1">position: absolute;</span>
+          <span class="s1">top: -40px;</span>
+          <span class="s1">width:14px; height:14px;</span>
+          <span class="s1">background: radial-gradient(circle at 30% 30%, #88a59a, #475d54);</span>
+          <span class="s1">border-radius: 80% 0 80% 0;</span>
+          <span class="s1">opacity:0.7;</span>
+          <span class="s1">z-index:3;</span>
+          <span class="s1">pointer-events:none;</span>
+          <span class="s1">animation: leaf-fall linear infinite;</span>
+        <span class="s1">}</span>
+        <span class="s1">.leaf-1 { left:10%; animation-duration:9s; }</span>
+        <span class="s1">.leaf-2 { left:30%; animation-duration:11s; animation-delay:-3s; }</span>
+        <span class="s1">.leaf-3 { left:55%; animation-duration:10s; animation-delay:-5s; }</span>
+        <span class="s1">.leaf-4 { left:75%; animation-duration:12s; animation-delay:-7s; }</span>
+        <span class="s1">@keyframes leaf-fall {</span>
+          <span class="s1">0% { transform: translateY(-20px) translateX(0) rotate(0deg); opacity:0; }</span>
+          <span class="s1">10% { opacity:0.8; }</span>
+          <span class="s1">100% { transform: translateY(520px) translateX(80px) rotate(720deg); opacity:0; }</span>
+        <span class="s1">}</span>
+        <span class="s1">.slash {</span>
+          <span class="s1">position:absolute;</span>
+          <span class="s1">top:50%;</span>
+          <span class="s1">width:70%; height:2px;</span>
+          <span class="s1">background:linear-gradient(90deg,transparent,#6b857c,transparent);</span>
+          <span class="s1">z-index:4;</span>
+          <span class="s1">filter:blur(1px);</span>
+          <span class="s1">opacity:0;</span>
+          <span class="s1">pointer-events:none;</span>
+          <span class="s1">animation: slash-fade 4s ease-in-out infinite;</span>
+        <span class="s1">}</span>
+        <span class="s1">.slash-left { left:-20%; transform:rotate(-12deg); }</span>
+        <span class="s1">.slash-right { right:-20%; transform:rotate(15deg); animation-delay:-2s; }</span>
+        <span class="s1">@keyframes slash-fade {</span>
+          <span class="s1">0%,40%,100% { opacity:0; }</span>
+          <span class="s1">50% { opacity:0.55; }</span>
+        <span class="s1">}</span>
+        <span class="s1">.jianghu-vignette {</span>
+          <span class="s1">position:absolute;</span>
+          <span class="s1">inset:0;</span>
+          <span class="s1">z-index:5;</span>
+          <span class="s1">background:radial-gradient(ellipse at center, rgba(0,0,0,0) 55%, rgba(40,60,55,0.18) 100%);</span>
+          <span class="s1">pointer-events:none;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">/* 首页 */</span>
+        <span class="s1">h1{</span>
+          <span class="s1">font-size: 42px;</span>
+          <span class="s1">letter-spacing: 4px;</span>
+          <span class="s1">margin-bottom:12px;</span>
+          <span class="s1">font-weight: 500;</span>
+          <span class="s1">color: #243531;</span>
+          <span class="s1">text-shadow: 0 1px 6px rgba(90, 120, 110, 0.15);</span>
+        <span class="s1">}</span>
+        <span class="s1">.desc{</span>
+          <span class="s1">font-size:18px;</span>
+          <span class="s1">color:#5f746c;</span>
+          <span class="s1">margin-bottom:40px;</span>
+        <span class="s1">}</span>
+        <span class="s1">.btn-group{</span>
+          <span class="s1">display:flex;</span>
+          <span class="s1">gap:16px;</span>
+          <span class="s1">justify-content:center;</span>
+          <span class="s1">flex-wrap:wrap;</span>
+          <span class="s1">margin-bottom:30px;</span>
+        <span class="s1">}</span>
+        <span class="s1">button{</span>
+          <span class="s1">padding:14px 32px;</span>
+          <span class="s1">border:1px solid #a9bdb4;</span>
+          <span class="s1">background:rgba(120,150,140,0.06);</span>
+          <span class="s1">color:#2f403b;</span>
+          <span class="s1">font-size:18px;</span>
+          <span class="s1">border-radius:4px;</span>
+          <span class="s1">cursor:pointer;</span>
+          <span class="s1">transition:0.2s;</span>
+        <span class="s1">}</span>
+        <span class="s1">button:hover{</span>
+          <span class="s1">background:rgba(120,150,140,0.14);</span>
+          <span class="s1">border-color:#8aa89c;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">/* 答题区域 */</span>
+        <span class="s1">.q-wrap{</span>
+          <span class="s1">max-width:620px;</span>
+          <span class="s1">margin:0 auto;</span>
+          <span class="s1">display:none;</span>
+        <span class="s1">}</span>
+        <span class="s1">.q-index{</span>
+          <span class="s1">color:#6e857c;</span>
+          <span class="s1">margin-bottom:8px;</span>
+        <span class="s1">}</span>
+        <span class="s1">.q-title{</span>
+          <span class="s1">font-size:22px;</span>
+          <span class="s1">margin-bottom:24px;</span>
+          <span class="s1">line-height:1.6;</span>
+        <span class="s1">}</span>
+        <span class="s1">.opt-item{</span>
+          <span class="s1">border:1px solid #b9cdc4;</span>
+          <span class="s1">padding:14px 20px;</span>
+          <span class="s1">border-radius:6px;</span>
+          <span class="s1">margin-bottom:12px;</span>
+          <span class="s1">cursor:pointer;</span>
+          <span class="s1">transition:0.2s;</span>
+          <span class="s1">text-align:left;</span>
+          <span class="s1">background:rgba(120,150,140,0.04);</span>
+        <span class="s1">}</span>
+        <span class="s1">.opt-item:hover{</span>
+          <span class="s1">border-color:#8aa89c;</span>
+          <span class="s1">background:rgba(120,150,140,0.10);</span>
+        <span class="s1">}</span>
+        <span class="s1">.ctrl-row{</span>
+          <span class="s1">display:flex;</span>
+          <span class="s1">gap:12px;</span>
+          <span class="s1">justify-content:center;</span>
+          <span class="s1">margin-top:24px;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">/* 结果页 */</span>
+        <span class="s1">.res-wrap{</span>
+          <span class="s1">max-width:640px;</span>
+          <span class="s1">margin:0 auto;</span>
+          <span class="s1">display:none;</span>
+          <span class="s1">text-align:left;</span>
+          <span class="s1">border:1px solid #b9cdc4;</span>
+          <span class="s1">padding:24px;</span>
+          <span class="s1">border-radius:12px;</span>
+          <span class="s1">background: linear-gradient(160deg, #f7faf7, #eef4ef);</span>
+          <span class="s1">box-shadow: 0 10px 30px rgba(40,60,55,0.12);</span>
+        <span class="s1">}</span>
+        <span class="s1">.res-wrap h2{</span>
+          <span class="s1">text-align:center;</span>
+          <span class="s1">margin-bottom:20px;</span>
+          <span class="s1">font-size:24px;</span>
+          <span class="s1">color:#243531;</span>
+        <span class="s1">}</span>
+        <span class="s1">/* 八维柱状图 */</span>
+        <span class="s1">.bar-box{</span>
+          <span class="s1">width:100%;</span>
+          <span class="s1">padding:16px 0;</span>
+          <span class="s1">margin-bottom:20px;</span>
+        <span class="s1">}</span>
+        <span class="s1">.bar-row{</span>
+          <span class="s1">display:flex;</span>
+          <span class="s1">justify-content:space-around;</span>
+          <span class="s1">align-items:flex-end;</span>
+          <span class="s1">height:160px;</span>
+          <span class="s1">gap:4px;</span>
+        <span class="s1">}</span>
+        <span class="s1">.bar-col{</span>
+          <span class="s1">flex:1;</span>
+          <span class="s1">display:flex;</span>
+          <span class="s1">flex-direction:column;</span>
+          <span class="s1">align-items:center;</span>
+        <span class="s1">}</span>
+        <span class="s1">.bar-bg{</span>
+          <span class="s1">width:28px;</span>
+          <span class="s1">height:150px;</span>
+          <span class="s1">background:#dce7e1;</span>
+          <span class="s1">border-radius:2px;</span>
+          <span class="s1">position:relative;</span>
+        <span class="s1">}</span>
+        <span class="s1">.bar-fill{</span>
+          <span class="s1">width:100%;</span>
+          <span class="s1">background:#5b756b;</span>
+          <span class="s1">border-radius:2px;</span>
+          <span class="s1">position:absolute;</span>
+          <span class="s1">bottom:0;</span>
+          <span class="s1">transition:height 0.4s ease;</span>
+        <span class="s1">}</span>
+        <span class="s1">.bar-label{</span>
+          <span class="s1">margin-top:6px;</span>
+          <span class="s1">font-size:13px;</span>
+          <span class="s1">color:#455c54;</span>
+        <span class="s1">}</span>
+        <span class="s1">.bar-score{</span>
+          <span class="s1">font-size:12px;</span>
+          <span class="s1">color:#6e857c;</span>
+        <span class="s1">}</span>
+        <span class="s1">.tag-row{</span>
+          <span class="s1">display:flex;</span>
+          <span class="s1">gap:10px;</span>
+          <span class="s1">justify-content:center;</span>
+          <span class="s1">margin:20px 0;</span>
+        <span class="s1">}</span>
+        <span class="s1">.tag{</span>
+          <span class="s1">padding:6px 14px;</span>
+          <span class="s1">border:1px solid #a9bdb4;</span>
+          <span class="s1">background:rgba(120,150,140,0.06);</span>
+          <span class="s1">border-radius:3px;</span>
+          <span class="s1">color:#2f403b;</span>
+        <span class="s1">}</span>
+        <span class="s1">.match-item{</span>
+          <span class="s1">padding:12px 10px;</span>
+          <span class="s1">margin:10px 0;</span>
+          <span class="s1">border:1px solid #c9d9d1;</span>
+          <span class="s1">background:rgba(120,150,140,0.03);</span>
+        <span class="s1">}</span>
+        <span class="s1">.match-title{</span>
+          <span class="s1">color:#5f746c;</span>
+          <span class="s1">font-size:14px;</span>
+          <span class="s1">margin-bottom:4px;</span>
+        <span class="s1">}</span>
+        <span class="s1">.match-name{</span>
+          <span class="s1">font-weight:bold;</span>
+          <span class="s1">font-size:17px;</span>
+          <span class="s1">color:#243531;</span>
+        <span class="s1">}</span>
+        <span class="s1">.res-bottom{</span>
+          <span class="s1">display:flex;</span>
+          <span class="s1">gap:12px;</span>
+          <span class="s1">justify-content:center;</span>
+          <span class="s1">margin-top:26px;</span>
+          <span class="s1">flex-wrap:wrap;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">/* 图鉴页 */</span>
+        <span class="s1">.book-wrap{</span>
+          <span class="s1">max-width:680px;</span>
+          <span class="s1">margin:0 auto;</span>
+          <span class="s1">display:none;</span>
+          <span class="s1">text-align:left;</span>
+        <span class="s1">}</span>
+        <span class="s1">.book-wrap h2{</span>
+          <span class="s1">text-align:center;</span>
+          <span class="s1">font-size:34px;</span>
+          <span class="s1">margin-bottom:30px;</span>
+          <span class="s1">letter-spacing:4px;</span>
+          <span class="s1">color:#243531;</span>
+        <span class="s1">}</span>
+        <span class="s1">.book-card{</span>
+          <span class="s1">border:1px solid #b9cdc4;</span>
+          <span class="s1">padding:18px 22px;</span>
+          <span class="s1">border-radius:8px;</span>
+          <span class="s1">margin-bottom:14px;</span>
+          <span class="s1">background:rgba(120,150,140,0.04);</span>
+        <span class="s1">}</span>
+        <span class="s1">.book-card h3{</span>
+          <span class="s1">font-size:20px;</span>
+          <span class="s1">margin-bottom:6px;</span>
+          <span class="s1">color:#243531;</span>
+        <span class="s1">}</span>
+        <span class="s1">.book-card p{</span>
+          <span class="s1">color:#455c54;</span>
+          <span class="s1">line-height:1.7;</span>
+          <span class="s1">font-size:15px;</span>
+        <span class="s1">}</span>
+        <span class="s1">.book-back{</span>
+          <span class="s1">text-align:center;</span>
+          <span class="s1">margin-top:30px;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">/* 打赏区域 */</span>
+        <span class="s1">.donate-box{</span>
+          <span class="s1">margin-top:24px;</span>
+          <span class="s1">padding:18px 14px;</span>
+          <span class="s1">border-top:1px solid #c9d9d1;</span>
+          <span class="s1">text-align:center;</span>
+        <span class="s1">}</span>
+        <span class="s1">.donate-tip{</span>
+          <span class="s1">color:#5f746c;</span>
+          <span class="s1">font-size:14px;</span>
+          <span class="s1">margin-bottom:12px;</span>
+        <span class="s1">}</span>
+        <span class="s1">.donate-qr{</span>
+          <span class="s1">width:130px;</span>
+          <span class="s1">height:130px;</span>
+          <span class="s1">border-radius:6px;</span>
+          <span class="s1">border:1px solid #b9cdc4;</span>
+        <span class="s1">}</span>
+    <span class="s0">&lt;/style&gt;</span>
+<span class="s0">&lt;/head&gt;</span>
+<span class="s0">&lt;body&gt;</span>
+<span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;jianghu-stage&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;jianghu-bg&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;img </span><span class="s2">src</span><span class="s3">=&quot;zhulin.jpg&quot; </span><span class="s2">alt</span><span class="s3">=&quot;竹林&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;fog fog-1&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;fog fog-2&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;fog fog-3&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;leaf leaf-1&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;leaf leaf-2&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;leaf leaf-3&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;leaf leaf-4&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;slash slash-left&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;slash slash-right&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;jianghu-vignette&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+<span class="s0">&lt;/div&gt;</span>
+
+<span class="s0">&lt;div </span><span class="s2">id</span><span class="s3">=&quot;home&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;h1&gt;</span><span class="s1">jianghu</span><span class="s0">&lt;/h1&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;desc&quot;</span><span class="s0">&gt;</span><span class="s1">测测你是江湖里哪一位少年</span><span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;btn-group&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;button </span><span class="s2">id</span><span class="s3">=&quot;startBtn&quot;</span><span class="s0">&gt;</span><span class="s1">开始测试</span><span class="s0">&lt;/button&gt;</span>
+        <span class="s0">&lt;button </span><span class="s2">id</span><span class="s3">=&quot;bookBtn&quot;</span><span class="s0">&gt;</span><span class="s1">江湖图鉴</span><span class="s0">&lt;/button&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+<span class="s0">&lt;/div&gt;</span>
+
+<span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;q-wrap&quot; </span><span class="s2">id</span><span class="s3">=&quot;questionBox&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;q-index&quot; </span><span class="s2">id</span><span class="s3">=&quot;qIndex&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;q-title&quot; </span><span class="s2">id</span><span class="s3">=&quot;qTitle&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">id</span><span class="s3">=&quot;optList&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;ctrl-row&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;button </span><span class="s2">id</span><span class="s3">=&quot;prevBtn&quot;</span><span class="s0">&gt;</span><span class="s1">上一题</span><span class="s0">&lt;/button&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+<span class="s0">&lt;/div&gt;</span>
+
+<span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;res-wrap&quot; </span><span class="s2">id</span><span class="s3">=&quot;resultBox&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;h2&gt;</span><span class="s1">你的江湖八维</span><span class="s0">&lt;/h2&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;bar-box&quot; </span><span class="s2">id</span><span class="s3">=&quot;barBox&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;tag-row&quot; </span><span class="s2">id</span><span class="s3">=&quot;tagRow&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;match-item&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;match-title&quot;</span><span class="s0">&gt;</span><span class="s1">同行游侠</span><span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;match-name&quot; </span><span class="s2">id</span><span class="s3">=&quot;partner&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;match-item&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;match-title&quot;</span><span class="s0">&gt;</span><span class="s1">神交至友</span><span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;match-name&quot; </span><span class="s2">id</span><span class="s3">=&quot;bosom&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;res-bottom&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;button </span><span class="s2">id</span><span class="s3">=&quot;restartBtn&quot;</span><span class="s0">&gt;</span><span class="s1">再测一次</span><span class="s0">&lt;/button&gt;</span>
+        <span class="s0">&lt;button </span><span class="s2">id</span><span class="s3">=&quot;saveImgBtn&quot;</span><span class="s0">&gt;</span><span class="s1">保存图片</span><span class="s0">&lt;/button&gt;</span>
+        <span class="s0">&lt;button </span><span class="s2">id</span><span class="s3">=&quot;shareBtn&quot;</span><span class="s0">&gt;</span><span class="s1">分享给朋友</span><span class="s0">&lt;/button&gt;</span>
+        <span class="s0">&lt;button </span><span class="s2">id</span><span class="s3">=&quot;toBookBtn&quot;</span><span class="s0">&gt;</span><span class="s1">江湖图鉴</span><span class="s0">&lt;/button&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+
+    <span class="s4">&lt;!-- 单张打赏图，截图不会带上 --&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;donate-box&quot; </span><span class="s2">data-html2canvas-ignore</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;donate-tip&quot;</span><span class="s0">&gt;</span><span class="s1">若喜欢这个江湖测试，可扫码支持作者</span><span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;img </span><span class="s2">class</span><span class="s3">=&quot;donate-qr&quot; </span><span class="s2">src</span><span class="s3">=&quot;donate.jpg&quot; </span><span class="s2">alt</span><span class="s3">=&quot;打赏&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+<span class="s0">&lt;/div&gt;</span>
+
+<span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;book-wrap&quot; </span><span class="s2">id</span><span class="s3">=&quot;bookBox&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;h2&gt;</span><span class="s1">江湖图鉴</span><span class="s0">&lt;/h2&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">id</span><span class="s3">=&quot;bookList&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;book-back&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;button </span><span class="s2">id</span><span class="s3">=&quot;backHomeBtn&quot;</span><span class="s0">&gt;</span><span class="s1">返回首页</span><span class="s0">&lt;/button&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+<span class="s0">&lt;/div&gt;</span>
+
+<span class="s0">&lt;script&gt;</span>
+    <span class="s1">// 八维顺序：疏狂、热忱、跳脱、锐敏、念旧、赴义、持重、旷达</span>
+    <span class="s1">const dimNames = [&quot;疏狂&quot;,&quot;热忱&quot;,&quot;跳脱&quot;,&quot;锐敏&quot;,&quot;念旧&quot;,&quot;赴义&quot;,&quot;持重&quot;,&quot;旷达&quot;];</span>
+    <span class="s1">const dimMax = 5;</span>
+
+    <span class="s1">// 题库，每题选项附带8维度加分</span>
+    <span class="s1">const questions = [</span>
+      <span class="s1">{title:&quot;路遇陌生人被强敌追杀，你会？&quot;,</span>
+      <span class="s1">opt:[</span>
+        <span class="s1">{txt:&quot;出手相助，不问缘由&quot;,s:[0,2,0,0,1,2,1,0]},</span>
+        <span class="s1">{txt:&quot;静观其变，看清局势再决定&quot;,s:[1,1,0,2,0,1,2,0]},</span>
+        <span class="s1">{txt:&quot;绕道避开，不多管闲事&quot;,s:[2,0,0,1,0,0,0,2]},</span>
+        <span class="s1">{txt:&quot;暗中布局，坐收渔利&quot;,s:[2,0,2,2,0,0,1,0]}</span>
+      <span class="s1">]},</span>
+      <span class="s1">{title:&quot;你最向往的兵器是？&quot;,</span>
+      <span class="s1">opt:[</span>
+        <span class="s1">{txt:&quot;长剑，潇洒快意&quot;,s:[2,1,1,1,1,2,1,1]},</span>
+        <span class="s1">{txt:&quot;短刃，灵动突袭&quot;,s:[2,0,2,2,0,1,1,0]},</span>
+        <span class="s1">{txt:&quot;折扇，文雅藏锋&quot;,s:[1,1,0,2,0,1,2,1]},</span>
+        <span class="s1">{txt:&quot;重刀，势大力沉&quot;,s:[2,0,2,1,0,1,2,0]}</span>
+      <span class="s1">]},</span>
+      <span class="s1">{title:&quot;江湖传言藏有绝世秘籍，你会？&quot;,</span>
+      <span class="s1">opt:[</span>
+        <span class="s1">{txt:&quot;不强求，随缘相逢&quot;,s:[1,1,0,1,0,0,1,2]},</span>
+        <span class="s1">{txt:&quot;有机会就探寻，不强夺&quot;,s:[1,1,1,1,0,1,1,1]},</span>
+        <span class="s1">{txt:&quot;权衡利弊，值得才出手&quot;,s:[1,0,0,2,0,0,2,0]},</span>
+        <span class="s1">{txt:&quot;不惜代价拿到手&quot;,s:[2,0,2,2,0,0,1,0]}</span>
+      <span class="s1">]},</span>
+      <span class="s1">{title:&quot;交好的友人背叛了你，你？&quot;,</span>
+      <span class="s1">opt:[</span>
+        <span class="s1">{txt:&quot;伤心远离，不再为敌&quot;,s:[1,2,0,2,2,0,0,1]},</span>
+        <span class="s1">{txt:&quot;问清缘由，恩怨分明&quot;,s:[1,1,0,1,1,1,2,0]},</span>
+        <span class="s1">{txt:&quot;记在心底，伺机制衡&quot;,s:[2,0,0,2,0,0,1,0]},</span>
+        <span class="s1">{txt:&quot;有仇必报，绝不姑息&quot;,s:[2,0,2,1,0,0,1,0]}</span>
+      <span class="s1">]},</span>
+      <span class="s1">{title:&quot;门派委派凶险任务，你？&quot;,</span>
+      <span class="s1">opt:[</span>
+        <span class="s1">{txt:&quot;主动请缨，挺身向前&quot;,s:[2,1,1,1,1,2,1,0]},</span>
+        <span class="s1">{txt:&quot;估量实力，量力而行&quot;,s:[1,1,0,1,0,1,2,1]},</span>
+        <span class="s1">{txt:&quot;委婉推辞，保全自身&quot;,s:[1,0,0,1,0,0,0,2]},</span>
+        <span class="s1">{txt:&quot;借机博取功劳筹码&quot;,s:[2,0,2,2,0,0,1,0]}</span>
+      <span class="s1">]},</span>
+      <span class="s1">{title:&quot;闲暇无事，你更喜欢？&quot;,</span>
+      <span class="s1">opt:[</span>
+        <span class="s1">{txt:&quot;游历山河，行侠四方&quot;,s:[2,2,2,1,1,2,0,1]},</span>
+        <span class="s1">{txt:&quot;闭关打磨武艺&quot;,s:[1,1,0,1,0,1,2,0]},</span>
+        <span class="s1">{txt:&quot;品茶看书，静享清闲&quot;,s:[1,1,0,1,0,0,1,2]},</span>
+        <span class="s1">{txt:&quot;游走各方结交豪杰权贵&quot;,s:[2,1,2,2,0,0,1,0]}</span>
+      <span class="s1">]},</span>
+      <span class="s1">{title:&quot;有人当众出言羞辱你，你？&quot;,</span>
+      <span class="s1">opt:[</span>
+        <span class="s1">{txt:&quot;一笑置之，不予争辩&quot;,s:[1,1,0,1,0,0,1,2]},</span>
+        <span class="s1">{txt:&quot;据理力争，当场辩驳&quot;,s:[2,1,1,1,0,1,2,0]},</span>
+        <span class="s1">{txt:&quot;隐忍记下，静待时机&quot;,s:[2,0,0,2,0,0,1,0]},</span>
+        <span class="s1">{txt:&quot;当场出手立威&quot;,s:[2,0,2,1,0,1,1,0]}</span>
+      <span class="s1">]},</span>
+      <span class="s1">{title:&quot;行走江湖，你更相信？&quot;,</span>
+      <span class="s1">opt:[</span>
+        <span class="s1">{txt:&quot;人心本善，以诚相待&quot;,s:[0,2,1,0,2,2,1,1]},</span>
+        <span class="s1">{txt:&quot;人心复杂，谨慎相处&quot;,s:[1,1,0,2,0,1,2,0]},</span>
+        <span class="s1">{txt:&quot;利益为先，人情次之&quot;,s:[1,0,0,2,0,0,1,0]},</span>
+        <span class="s1">{txt:&quot;力量才是话语权&quot;,s:[2,0,2,1,0,1,1,0]}</span>
+      <span class="s1">]},</span>
+      <span class="s1">{title:&quot;意外得到一笔宝藏，你打算？&quot;,</span>
+      <span class="s1">opt:[</span>
+        <span class="s1">{txt:&quot;散给贫苦百姓&quot;,s:[0,2,0,0,1,2,1,1]},</span>
+        <span class="s1">{txt:&quot;自留一部分，接济亲友&quot;,s:[1,2,1,0,2,1,1,0]},</span>
+        <span class="s1">{txt:&quot;妥善收好以备急用&quot;,s:[1,0,0,1,0,0,2,1]},</span>
+        <span class="s1">{txt:&quot;用来扩充自己势力&quot;,s:[2,0,2,1,0,0,1,0]}</span>
+      <span class="s1">]},</span>
+      <span class="s1">{title:&quot;比武交手，你看重？&quot;,</span>
+      <span class="s1">opt:[</span>
+        <span class="s1">{txt:&quot;点到为止，敬重对手&quot;,s:[1,2,0,0,1,1,1,2]},</span>
+        <span class="s1">{txt:&quot;公平对决，分出胜负&quot;,s:[2,1,1,1,0,1,2,0]},</span>
+        <span class="s1">{txt:&quot;优先自保，不冒风险&quot;,s:[1,0,0,1,0,0,1,1]},</span>
+        <span class="s1">{txt:&quot;击溃对手使其臣服&quot;,s:[2,0,2,1,0,1,1,0]}</span>
+      <span class="s1">]},</span>
+      <span class="s1">{title:&quot;你如何看待江湖规矩？&quot;,</span>
+      <span class="s1">opt:[</span>
+        <span class="s1">{txt:&quot;恪守道义，守规矩而行&quot;,s:[0,2,0,1,1,2,2,0]},</span>
+        <span class="s1">{txt:&quot;合理则守，不合理可变通&quot;,s:[1,1,1,1,0,1,1,1]},</span>
+        <span class="s1">{txt:&quot;规矩是束缚弱者的枷锁&quot;,s:[2,0,2,1,0,0,0,1]},</span>
+        <span class="s1">{txt:&quot;强者，自定规矩&quot;,s:[2,0,2,2,0,0,1,0]}</span>
+      <span class="s1">]},</span>
+      <span class="s1">{title:&quot;深夜赶路，密林传来异响，你？&quot;,</span>
+      <span class="s1">opt:[</span>
+        <span class="s1">{txt:&quot;上前查看，恐有人遇险&quot;,s:[1,2,1,1,1,2,0,0]},</span>
+        <span class="s1">{txt:&quot;小心戒备，缓慢探查&quot;,s:[1,1,0,2,0,1,2,0]},</span>
+        <span class="s1">{txt:&quot;绕道而行，避开麻烦&quot;,s:[1,0,0,1,0,0,0,2]},</span>
+        <span class="s1">{txt:&quot;潜伏一旁静观动静&quot;,s:[2,0,0,2,0,0,1,0]}</span>
+      <span class="s1">]},</span>
+      <span class="s1">{title:&quot;恩人请你做一件违道义之事，你？&quot;,</span>
+      <span class="s1">opt:[</span>
+        <span class="s1">{txt:&quot;断然拒绝，守住本心&quot;,s:[1,2,0,1,1,2,1,0]},</span>
+        <span class="s1">{txt:&quot;劝说恩人，寻找折中法子&quot;,s:[1,2,0,1,1,1,2,0]},</span>
+        <span class="s1">{txt:&quot;少量帮忙，不深陷其中&quot;,s:[1,1,0,1,0,0,1,1]},</span>
+        <span class="s1">{txt:&quot;报恩为先，照做不误&quot;,s:[1,1,0,1,2,1,0,0]}</span>
+      <span class="s1">]},</span>
+      <span class="s1">{title:&quot;心中理想居所是？&quot;,</span>
+      <span class="s1">opt:[</span>
+        <span class="s1">{txt:&quot;四海为家，漂泊江湖&quot;,s:[2,1,2,1,1,1,0,2]},</span>
+        <span class="s1">{txt:&quot;山间草庐，习武静心&quot;,s:[1,1,0,1,0,1,1,2]},</span>
+        <span class="s1">{txt:&quot;繁华城镇，往来便利&quot;,s:[1,1,1,1,0,0,1,0]},</span>
+        <span class="s1">{txt:&quot;雄踞要塞，府邸恢弘&quot;,s:[2,0,2,1,0,0,2,0]}</span>
+      <span class="s1">]},</span>
+      <span class="s1">{title:&quot;看见弱小被门派欺压，你？&quot;,</span>
+      <span class="s1">opt:[</span>
+        <span class="s1">{txt:&quot;挺身而出主持公道&quot;,s:[1,2,1,1,1,2,1,0]},</span>
+        <span class="s1">{txt:&quot;收集证据找人调停&quot;,s:[1,1,0,2,0,1,2,0]},</span>
+        <span class="s1">{txt:&quot;事不关己默默走开&quot;,s:[1,0,0,1,0,0,0,2]},</span>
+        <span class="s1">{txt:&quot;借此机会拉拢弱者&quot;,s:[2,0,2,2,0,0,1,0]}</span>
+      <span class="s1">]},</span>
+      <span class="s1">{title:&quot;修习武功，你追求？&quot;,</span>
+      <span class="s1">opt:[</span>
+        <span class="s1">{txt:&quot;强身护心，守护他人&quot;,s:[1,2,0,1,1,2,1,0]},</span>
+        <span class="s1">{txt:&quot;精进武艺，挑战高手&quot;,s:[2,1,2,1,0,1,1,0]},</span>
+        <span class="s1">{txt:&quot;够用即可，不求顶尖&quot;,s:[1,1,0,0,0,0,1,2]},</span>
+        <span class="s1">{txt:&quot;天下无敌，无人敢犯&quot;,s:[2,0,2,1,0,1,2,0]}</span>
+      <span class="s1">]},</span>
+      <span class="s1">{title:&quot;和同伴想法严重冲突，你？&quot;,</span>
+      <span class="s1">opt:[</span>
+        <span class="s1">{txt:&quot;尊重对方，求同存异&quot;,s:[1,2,0,1,2,1,0,2]},</span>
+        <span class="s1">{txt:&quot;理性辩论，商量共识&quot;,s:[1,1,0,1,1,1,2,0]},</span>
+        <span class="s1">{txt:&quot;保留想法，不再争辩&quot;,s:[1,0,0,1,0,0,1,1]},</span>
+        <span class="s1">{txt:&quot;说服众人，按我方案&quot;,s:[2,0,1,1,0,0,2,0]}</span>
+      <span class="s1">]},</span>
+      <span class="s1">{title:&quot;如果可以，你想要拥有？&quot;,</span>
+      <span class="s1">opt:[</span>
+        <span class="s1">{txt:&quot;一颗赤诚侠义之心&quot;,s:[0,2,0,1,1,2,1,1]},</span>
+        <span class="s1">{txt:&quot;高超无双的武艺&quot;,s:[2,1,2,1,0,1,1,0]},</span>
+        <span class="s1">{txt:&quot;看透人心的智慧&quot;,s:[1,1,0,2,0,0,2,0]},</span>
+        <span class="s1">{txt:&quot;号令一方的权势&quot;,s:[2,0,2,1,0,0,2,0]}</span>
+      <span class="s1">]},</span>
+      <span class="s1">{title:&quot;江湖到处流传对你的谣言，你？&quot;,</span>
+      <span class="s1">opt:[</span>
+        <span class="s1">{txt:&quot;清者自清，不去解释&quot;,s:[2,1,0,1,0,0,1,2]},</span>
+        <span class="s1">{txt:&quot;寻机会澄清真相&quot;,s:[1,2,0,1,0,1,2,0]},</span>
+        <span class="s1">{txt:&quot;暗中提防戒备旁人&quot;,s:[2,0,0,2,0,0,1,0]},</span>
+        <span class="s1">{txt:&quot;制造流言反击对方&quot;,s:[2,0,2,2,0,0,1,0]}</span>
+      <span class="s1">]},</span>
+      <span class="s1">{title:&quot;两难抉择，你优先考虑？&quot;,</span>
+      <span class="s1">opt:[</span>
+        <span class="s1">{txt:&quot;是否对得起道义本心&quot;,s:[0,2,0,1,1,2,1,0]},</span>
+        <span class="s1">{txt:&quot;是否公平合理&quot;,s:[1,1,0,1,0,1,2,0]},</span>
+        <span class="s1">{txt:&quot;会不会连累自己&quot;,s:[1,0,0,1,0,0,1,1]},</span>
+        <span class="s1">{txt:&quot;能不能拿到好处&quot;,s:[1,0,1,2,0,0,1,0]}</span>
+      <span class="s1">]},</span>
+      <span class="s1">{title:&quot;看待输赢胜负，你？&quot;,</span>
+      <span class="s1">opt:[</span>
+        <span class="s1">{txt:&quot;输赢不重要，本心为先&quot;,s:[1,2,0,0,0,1,0,2]},</span>
+        <span class="s1">{txt:&quot;尽力而为，胜负坦然&quot;,s:[1,1,1,1,0,1,1,1]},</span>
+        <span class="s1">{txt:&quot;尽量不输，保全自身&quot;,s:[1,0,0,1,0,0,2,0]},</span>
+        <span class="s1">{txt:&quot;只能赢，不能输&quot;,s:[2,0,2,1,0,1,2,0]}</span>
+      <span class="s1">]},</span>
+      <span class="s1">{title:&quot;结识新的江湖友人，你？&quot;,</span>
+      <span class="s1">opt:[</span>
+        <span class="s1">{txt:&quot;真心相待，敞开心扉&quot;,s:[0,2,1,0,2,1,1,0]},</span>
+        <span class="s1">{txt:&quot;慢慢相处，日久见心&quot;,s:[1,1,0,1,1,1,2,0]},</span>
+        <span class="s1">{txt:&quot;有所保留，不轻交心&quot;,s:[2,0,0,2,0,0,1,1]},</span>
+        <span class="s1">{txt:&quot;判断对方有无用处&quot;,s:[2,0,1,2,0,0,1,0]}</span>
+      <span class="s1">]},</span>
+      <span class="s1">{title:&quot;暴雨夜里，陌生旅人求借宿，你？&quot;,</span>
+      <span class="s1">opt:[</span>
+        <span class="s1">{txt:&quot;热情收留，备好食宿&quot;,s:[0,2,1,0,1,2,1,0]},</span>
+        <span class="s1">{txt:&quot;仔细盘问，无碍再收留&quot;,s:[1,1,0,2,0,1,2,0]},</span>
+        <span class="s1">{txt:&quot;婉言拒绝，不便收留&quot;,s:[1,0,0,1,0,0,1,1]},</span>
+        <span class="s1">{txt:&quot;试探底细，看有无利&quot;,s:[2,0,1,2,0,0,1,0]}</span>
+      <span class="s1">]},</span>
+      <span class="s1">{title:&quot;你更愿意追随何人？&quot;,</span>
+      <span class="s1">opt:[</span>
+        <span class="s1">{txt:&quot;心怀苍生的大侠&quot;,s:[0,2,0,1,1,2,1,1]},</span>
+        <span class="s1">{txt:&quot;武艺高强的良师&quot;,s:[2,1,2,1,0,1,1,0]},</span>
+        <span class="s1">{txt:&quot;足智多谋的智者&quot;,s:[1,1,0,2,0,0,2,0]},</span>
+        <span class="s1">{txt:&quot;胸怀宏图的霸主&quot;,s:[2,0,2,1,0,0,2,0]}</span>
+      <span class="s1">]},</span>
+      <span class="s1">{title:&quot;发现师门藏着过错，你？&quot;,</span>
+      <span class="s1">opt:[</span>
+        <span class="s1">{txt:&quot;直言劝谏，纠正过错&quot;,s:[1,2,0,1,1,2,1,0]},</span>
+        <span class="s1">{txt:&quot;私下禀告掌门审慎处理&quot;,s:[1,1,0,1,0,1,2,0]},</span>
+        <span class="s1">{txt:&quot;装作不知明哲保身&quot;,s:[1,0,0,1,0,0,1,1]},</span>
+        <span class="s1">{txt:&quot;抓住把柄当作筹码&quot;,s:[2,0,1,2,0,0,1,0]}</span>
+      <span class="s1">]},</span>
+      <span class="s1">{title:&quot;空闲时光，你偏爱？&quot;,</span>
+      <span class="s1">opt:[</span>
+        <span class="s1">{txt:&quot;扶危济困，行走四方&quot;,s:[1,2,1,1,1,2,0,1]},</span>
+        <span class="s1">{txt:&quot;与人切磋交流武学&quot;,s:[2,1,2,1,0,1,1,0]},</span>
+        <span class="s1">{txt:&quot;静坐独处修身养性&quot;,s:[1,1,0,1,0,0,1,2]},</span>
+        <span class="s1">{txt:&quot;谋划布局经营人脉&quot;,s:[2,0,1,2,0,0,2,0]}</span>
+      <span class="s1">]},</span>
+      <span class="s1">{title:&quot;对手实力远胜于你，你？&quot;,</span>
+      <span class="s1">opt:[</span>
+        <span class="s1">{txt:&quot;纵然不敌，守住道义底线&quot;,s:[1,2,0,1,0,2,1,0]},</span>
+        <span class="s1">{txt:&quot;暂避锋芒，等候时机&quot;,s:[1,1,0,2,0,1,2,0]},</span>
+        <span class="s1">{txt:&quot;不正面硬拼保全性命&quot;,s:[1,0,0,1,0,0,1,1]},</span>
+        <span class="s1">{txt:&quot;不择手段也要取胜&quot;,s:[2,0,2,2,0,0,1,0]}</span>
+      <span class="s1">]},</span>
+      <span class="s1">{title:&quot;你觉得江湖最重要的是？&quot;,</span>
+      <span class="s1">opt:[</span>
+        <span class="s1">{txt:&quot;侠义&quot;,s:[0,2,0,1,1,2,1,0]},</span>
+        <span class="s1">{txt:&quot;武艺&quot;,s:[2,1,2,1,0,1,1,0]},</span>
+        <span class="s1">{txt:&quot;智谋&quot;,s:[1,1,0,2,0,0,2,0]},</span>
+        <span class="s1">{txt:&quot;权柄&quot;,s:[2,0,2,1,0,0,2,0]}</span>
+      <span class="s1">]},</span>
+      <span class="s1">{title:&quot;别人受了你恩惠，你希望？&quot;,</span>
+      <span class="s1">opt:[</span>
+        <span class="s1">{txt:&quot;不必回报，随缘就好&quot;,s:[0,2,0,0,1,1,0,2]},</span>
+        <span class="s1">{txt:&quot;危难之时互相扶持&quot;,s:[1,2,0,1,2,1,1,0]},</span>
+        <span class="s1">{txt:&quot;对方记在心里，来日相助&quot;,s:[1,1,0,1,1,0,2,0]},</span>
+        <span class="s1">{txt:&quot;偿还等价的回报&quot;,s:[2,0,1,1,0,0,1,0]}</span>
+      <span class="s1">]},</span>
+      <span class="s1">{title:&quot;如果可以改变一桩江湖旧事，你想？&quot;,</span>
+      <span class="s1">opt:[</span>
+        <span class="s1">{txt:&quot;消弭纷争，四海安宁&quot;,s:[0,2,0,0,1,2,1,1]},</span>
+        <span class="s1">{txt:&quot;铲除奸邪，还江湖清明&quot;,s:[1,2,1,1,0,2,1,0]},</span>
+        <span class="s1">{txt:&quot;独守一方清净天地&quot;,s:[1,1,0,1,0,0,1,2]},</span>
+        <span class="s1">{txt:&quot;重整格局，由我执掌&quot;,s:[2,0,2,2,0,0,2,0]}</span>
+      <span class="s1">]}</span>
+    <span class="s1">];</span>
+
+    <span class="s1">// 30个江湖身份</span>
+    <span class="s1">const resultList = [</span>
+      <span class="s1">{name:&quot;赤心侠士&quot;,desc:&quot;一腔赤诚，道义为先。你是江湖里最纯粹的行者，不问得失，见难便扶，以本心行走世间。&quot;},</span>
+      <span class="s1">{name:&quot;清风剑客&quot;,desc:&quot;剑随身走，自在如风。不爱束缚，凭一身剑术快意恩仇，潇洒而不狂妄。&quot;},</span>
+      <span class="s1">{name:&quot;杏林医仙&quot;,desc:&quot;手握仁心，悬壶济世。你的兵器是药草，救人为先，纷争不沾，温柔却有力量。&quot;},</span>
+      <span class="s1">{name:&quot;古道游侠&quot;,desc:&quot;漂泊四方，无门无派。踏遍山河，见识无数故事，重诺守信，随性而坦荡。&quot;},</span>
+      <span class="s1">{name:&quot;守正门人&quot;,desc:&quot;恪守门规，尊师重道。信奉正道秩序，愿守护门派传承，稳重可靠。&quot;},</span>
+      <span class="s1">{name:&quot;凌云少侠&quot;,desc:&quot;意气风发，初生牛犊。心怀理想，敢闯敢拼，一腔热血，未来拥有无限可能。&quot;},</span>
+      <span class="s1">{name:&quot;山水隐者&quot;,desc:&quot;寄情山水，远离喧嚣。看透江湖纷扰，偏爱安静独处，不追名逐利。&quot;},</span>
+      <span class="s1">{name:&quot;温雅儒侠&quot;,desc:&quot;文武兼修，温文藏锋。以诗书养气，以剑术护身，进退有度，谦和有礼。&quot;},</span>
+      <span class="s1">{name:&quot;独行刀客&quot;,desc:&quot;独来独往，刀斩是非。不喜抱团，恩怨自己了结，沉默但立场分明。&quot;},</span>
+      <span class="s1">{name:&quot;闲云散人&quot;,desc:&quot;万事随缘，不争不抢。对权势秘籍皆淡然，只求日子安稳自在。&quot;},</span>
+      <span class="s1">{name:&quot;慎思谋士&quot;,desc:&quot;心思细腻，三思而行。遇事不冲动，习惯权衡利弊，稳妥求全。&quot;},</span>
+      <span class="s1">{name:&quot;情报暗探&quot;,desc:&quot;游走各方，洞悉秘闻。善于观察，消息灵通，藏于暗处，很少引人注目。&quot;},</span>
+      <span class="s1">{name:&quot;守山长老&quot;,desc:&quot;看淡纷争，守护一方。不喜扩张，只愿护住自己在意的人和土地。&quot;},</span>
+      <span class="s1">{name:&quot;奇门匠师&quot;,desc:&quot;精通机关巧术，匠心独运。不靠蛮力，以巧思取胜，低调又强大。&quot;},</span>
+      <span class="s1">{name:&quot;玉面军师&quot;,desc:&quot;擅长布局，运筹帷幄。不喜欢亲自厮杀，擅长谋划，引导局势走向。&quot;},</span>
+      <span class="s1">{name:&quot;逍遥客&quot;,desc:&quot;今朝有酒今朝醉，不爱长久谋划。享受当下，随性洒脱，不喜被人捆绑。&quot;},</span>
+      <span class="s1">{name:&quot;毒谷主人&quot;,desc:&quot;精通毒术，善恶随心。不主动害人，但谁若冒犯，自有自保手段。&quot;},</span>
+      <span class="s1">{name:&quot;影卫&quot;,desc:&quot;隐于阴影，听命行事。隐忍克制，执行力极强，情绪很少外露。&quot;},</span>
+      <span class="s1">{name:&quot;商贾豪侠&quot;,desc:&quot;手握财帛，互通江湖。以财力游走各派，重信誉，也懂得利益交换。&quot;},</span>
+      <span class="s1">{name:&quot;镇关守将&quot;,desc:&quot;镇守隘口，职责至上。把守护疆土、关卡安宁放在第一位，沉稳坚毅。&quot;},</span>
+      <span class="s1">{name:&quot;诡策客&quot;,desc:&quot;善用奇谋，不循常理。思路跳脱，常常出人意料，是一把双刃剑。&quot;},</span>
+      <span class="s1">{name:&quot;魔教护法&quot;,desc:&quot;不循世俗正道，自有一套准则。恩怨分明，不服条条框框的束缚。&quot;},</span>
+      <span class="s1">{name:&quot;夺势枭雄&quot;,desc:&quot;野心藏于骨，不甘屈居人下。目标清晰，愿意为目标步步筹谋。&quot;},</span>
+      <span class="s1">{name:&quot;乱世霸主&quot;,desc:&quot;胸怀宏图，欲掌风云。有统领众人的魄力，敢打破旧格局。&quot;},</span>
+      <span class="s1">{name:&quot;修罗武尊&quot;,desc:&quot;信奉力量，以武证道。痴迷武道巅峰，强者为尊，敬畏很少。&quot;},</span>
+      <span class="s1">{name:&quot;阴谋阁主&quot;,desc:&quot;擅长暗流博弈，不动声色收揽筹码。城府深沉，很少展露真心。&quot;},</span>
+      <span class="s1">{name:&quot;夺鼎枭雄&quot;,desc:&quot;不甘居于人下，伺机而动，乱世之中伺机夺取话语权。&quot;},</span>
+      <span class="s1">{name:&quot;独霸宗主&quot;,desc:&quot;执掌一派，说一不二。威严深重，门下之人皆听号令。&quot;},</span>
+      <span class="s1">{name:&quot;万鬼楼主&quot;,desc:&quot;行事孤绝，不在乎世间评价。手段凌厉，旁人不敢轻易招惹。&quot;},</span>
+      <span class="s1">{name:&quot;江湖共主&quot;,desc:&quot;有一统江湖的气魄，能压服各方势力，一言可搅动天下风云。&quot;}</span>
+    <span class="s1">];</span>
+
+    <span class="s1">// 性格匹配库</span>
+    <span class="s1">const matchPool = [</span>
+      <span class="s1">{dim:[0,4,3,2,3,4,2,1], partner:&quot;追风少年·烈刃（热血×跳脱）&quot;, bosom:&quot;云间客·随安（旷达温柔，同你看遍山河）&quot;},</span>
+      <span class="s1">{dim:[4,2,1,3,2,1,4,0], partner:&quot;青衫剑客·知遥（疏狂×持重）&quot;, bosom:&quot;执剑伴·星寻（热忱坚定，与你共赴风波）&quot;},</span>
+      <span class="s1">{dim:[2,3,2,4,1,4,2,0], partner:&quot;灵机少侠·阿策（锐敏×赴义）&quot;, bosom:&quot;静思客·砚秋（心思通透，懂你未尽之言）&quot;},</span>
+      <span class="s1">{dim:[1,4,2,1,2,3,1,4], partner:&quot;山行少年·野禾（热忱×旷达）&quot;, bosom:&quot;野路侠·拾风（随性自在，和你打闹江湖）&quot;},</span>
+      <span class="s1">{dim:[4,1,1,3,4,2,1,1], partner:&quot;孤峰少侠·寒舟（疏狂×念旧）&quot;, bosom:&quot;书剑客·清辞（安静相伴，懂你的孤傲）&quot;}</span>
+    <span class="s1">];</span>
+
+    <span class="s1">// 全局变量</span>
+    <span class="s1">let current = 0;</span>
+    <span class="s1">let answerList = [];</span>
+    <span class="s1">let dimScore = [0,0,0,0,0,0,0,0];</span>
+
+    <span class="s1">const home = document.getElementById(&quot;home&quot;);</span>
+    <span class="s1">const qBox = document.getElementById(&quot;questionBox&quot;);</span>
+    <span class="s1">const rBox = document.getElementById(&quot;resultBox&quot;);</span>
+    <span class="s1">const bBox = document.getElementById(&quot;bookBox&quot;);</span>
+    <span class="s1">const qIndex = document.getElementById(&quot;qIndex&quot;);</span>
+    <span class="s1">const qTitle = document.getElementById(&quot;qTitle&quot;);</span>
+    <span class="s1">const optList = document.getElementById(&quot;optList&quot;);</span>
+    <span class="s1">const prevBtn = document.getElementById(&quot;prevBtn&quot;);</span>
+    <span class="s1">const barBox = document.getElementById(&quot;barBox&quot;);</span>
+    <span class="s1">const tagRow = document.getElementById(&quot;tagRow&quot;);</span>
+    <span class="s1">const partnerDom = document.getElementById(&quot;partner&quot;);</span>
+    <span class="s1">const bosomDom = document.getElementById(&quot;bosom&quot;);</span>
+    <span class="s1">const bookListDom = document.getElementById(&quot;bookList&quot;);</span>
+    <span class="s1">const saveImgBtn = document.getElementById(&quot;saveImgBtn&quot;);</span>
+    <span class="s1">const shareBtn = document.getElementById(&quot;shareBtn&quot;);</span>
+    <span class="s1">const restartBtn = document.getElementById(&quot;restartBtn&quot;);</span>
+    <span class="s1">const toBookBtn = document.getElementById(&quot;toBookBtn&quot;);</span>
+    <span class="s1">const backHomeBtn = document.getElementById(&quot;backHomeBtn&quot;);</span>
+
+    <span class="s1">// 渲染图鉴</span>
+    <span class="s1">resultList.forEach(item=&gt;{</span>
+      <span class="s1">const card = document.createElement(&quot;div&quot;);</span>
+      <span class="s1">card.className = &quot;book-card&quot;;</span>
+      <span class="s1">card.innerHTML = `&lt;h3&gt;${item.name}&lt;/h3&gt;&lt;p&gt;${item.desc}&lt;/p&gt;`;</span>
+      <span class="s1">bookListDom.appendChild(card);</span>
+    <span class="s1">})</span>
+
+    <span class="s1">// 页面切换</span>
+    <span class="s1">function showPage(p){</span>
+      <span class="s1">home.style.display=&quot;none&quot;;</span>
+      <span class="s1">qBox.style.display=&quot;none&quot;;</span>
+      <span class="s1">rBox.style.display=&quot;none&quot;;</span>
+      <span class="s1">bBox.style.display=&quot;none&quot;;</span>
+      <span class="s1">if(p===&quot;home&quot;) home.style.display=&quot;block&quot;;</span>
+      <span class="s1">if(p===&quot;q&quot;) qBox.style.display=&quot;block&quot;;</span>
+      <span class="s1">if(p===&quot;res&quot;) rBox.style.display=&quot;block&quot;;</span>
+      <span class="s1">if(p===&quot;book&quot;) bBox.style.display=&quot;block&quot;;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">// 重新计算全部维度分数</span>
+    <span class="s1">function calcScore(){</span>
+      <span class="s1">dimScore = [0,0,0,0,0,0,0,0];</span>
+      <span class="s1">for(let s of answerList){</span>
+        <span class="s1">if(s) dimScore = dimScore.map((v,i)=&gt;v+s[i]);</span>
+      <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s1">// 渲染当前题目</span>
+    <span class="s1">function renderQ(){</span>
+      <span class="s1">const q = questions[current];</span>
+      <span class="s1">qIndex.innerText = `第 ${current+1} / ${questions.length} 题`;</span>
+      <span class="s1">qTitle.innerText = q.title;</span>
+      <span class="s1">optList.innerHTML = &quot;&quot;;</span>
+      <span class="s1">q.opt.forEach((o,idx)=&gt;{</span>
+        <span class="s1">const div = document.createElement(&quot;div&quot;);</span>
+        <span class="s1">div.className = &quot;opt-item&quot;;</span>
+        <span class="s1">div.innerText = o.txt;</span>
+        <span class="s1">div.onclick = ()=&gt;{</span>
+          <span class="s1">answerList[current] = o.s;</span>
+          <span class="s1">calcScore();</span>
+          <span class="s1">current++;</span>
+          <span class="s1">if(current &gt;= questions.length){</span>
+            <span class="s1">showResult();</span>
+          <span class="s1">}else{</span>
+            <span class="s1">renderQ();</span>
+          <span class="s1">}</span>
+        <span class="s1">}</span>
+        <span class="s1">optList.appendChild(div);</span>
+      <span class="s1">})</span>
+      <span class="s1">prevBtn.style.visibility = current&gt;0 ? &quot;visible&quot;:&quot;hidden&quot;;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">// 上一题按钮逻辑</span>
+    <span class="s1">prevBtn.onclick = ()=&gt;{</span>
+      <span class="s1">if(current &lt;= 0) return;</span>
+      <span class="s1">current--;</span>
+      <span class="s1">renderQ();</span>
+    <span class="s1">}</span>
+
+    <span class="s1">// 向量距离，用来匹配最合适搭档知己</span>
+    <span class="s1">function getDist(a,b){</span>
+      <span class="s1">let sum=0;</span>
+      <span class="s1">for(let i=0;i&lt;8;i++) sum += (a[i]-b[i])*(a[i]-b[i]);</span>
+      <span class="s1">return sum;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">// 结果页渲染</span>
+    <span class="s1">function showResult(){</span>
+      <span class="s1">showPage(&quot;res&quot;);</span>
+      <span class="s1">// 归一到0~5</span>
+      <span class="s1">const maxRaw = Math.max(...dimScore);</span>
+      <span class="s1">const norm = dimScore.map(v=&gt; maxRaw===0 ? 0 : Math.round(v/maxRaw * 5));</span>
+
+      <span class="s1">// 绘制柱状图</span>
+      <span class="s1">barBox.innerHTML = &quot;&quot;;</span>
+      <span class="s1">const row = document.createElement(&quot;div&quot;);</span>
+      <span class="s1">row.className=&quot;bar-row&quot;;</span>
+      <span class="s1">for(let i=0;i&lt;8;i++){</span>
+        <span class="s1">const col = document.createElement(&quot;div&quot;);</span>
+        <span class="s1">col.className=&quot;bar-col&quot;;</span>
+        <span class="s1">col.innerHTML = `</span>
+          <span class="s1">&lt;div class=&quot;bar-bg&quot;&gt;</span>
+            <span class="s1">&lt;div class=&quot;bar-fill&quot; style=&quot;height:${norm[i]/dimMax*100}%&quot;&gt;&lt;/div&gt;</span>
+          <span class="s1">&lt;/div&gt;</span>
+          <span class="s1">&lt;div class=&quot;bar-label&quot;&gt;${dimNames[i]}&lt;/div&gt;</span>
+          <span class="s1">&lt;div class=&quot;bar-score&quot;&gt;${norm[i]}&lt;/div&gt;</span>
+        <span class="s1">`;</span>
+        <span class="s1">row.appendChild(col);</span>
+      <span class="s1">}</span>
+      <span class="s1">barBox.appendChild(row);</span>
+
+      <span class="s1">// 取TOP3标签</span>
+      <span class="s1">const rank = [...norm].map((v,i)=&gt;({v,i})).sort((a,b)=&gt;b.v-a.v);</span>
+      <span class="s1">tagRow.innerHTML = &quot;&quot;;</span>
+      <span class="s1">for(let i=0;i&lt;3;i++){</span>
+        <span class="s1">const t = document.createElement(&quot;span&quot;);</span>
+        <span class="s1">t.className=&quot;tag&quot;;</span>
+        <span class="s1">t.innerText = dimNames[rank[i].i];</span>
+        <span class="s1">tagRow.appendChild(t);</span>
+      <span class="s1">}</span>
+
+      <span class="s1">// 匹配最合适</span>
+      <span class="s1">let best = matchPool[0];</span>
+      <span class="s1">let minD = getDist(norm, matchPool[0].dim);</span>
+      <span class="s1">for(let m of matchPool){</span>
+        <span class="s1">const d = getDist(norm, m.dim);</span>
+        <span class="s1">if(d &lt; minD){</span>
+          <span class="s1">minD = d;</span>
+          <span class="s1">best = m;</span>
+        <span class="s1">}</span>
+      <span class="s1">}</span>
+      <span class="s1">partnerDom.innerText = best.partner;</span>
+      <span class="s1">bosomDom.innerText = best.bosom;</span>
+
+      <span class="s1">// 匹配江湖身份</span>
+      <span class="s1">const totalRaw = dimScore.reduce((a,b)=&gt;a+b,0);</span>
+      <span class="s1">const idx = Math.min(Math.floor((totalRaw - 30)/3),29);</span>
+      <span class="s1">const res = resultList[idx];</span>
+      <span class="s1">document.querySelector(&quot;.res-wrap h2&quot;).innerText = `你的江湖身份：${res.name}`;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">// 保存图片</span>
+    <span class="s1">saveImgBtn.onclick = async ()=&gt;{</span>
+      <span class="s1">try{</span>
+        <span class="s1">const canvas = await html2canvas(rBox, {scale:2,useCORS:true});</span>
+        <span class="s1">const link = document.createElement(&quot;a&quot;);</span>
+        <span class="s1">link.download = &quot;江湖测试结果.png&quot;;</span>
+        <span class="s1">link.href = canvas.toDataURL(&quot;image/png&quot;);</span>
+        <span class="s1">link.click();</span>
+      <span class="s1">}catch(e){</span>
+        <span class="s1">alert(&quot;保存失败，请换浏览器重试&quot;);</span>
+      <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s1">// 新版分享逻辑</span>
+    <span class="s1">shareBtn.onclick = async ()=&gt;{</span>
+      <span class="s1">const shareUrl = location.href;</span>
+      <span class="s1">const shareTitle = &quot;江湖少年身份测试&quot;;</span>
+      <span class="s1">const shareText = &quot;来测测你是江湖里哪一位少年！&quot;;</span>
+      <span class="s1">if(navigator.share){</span>
+        <span class="s1">try{</span>
+          <span class="s1">await navigator.share({</span>
+            <span class="s1">title: shareTitle,</span>
+            <span class="s1">text: shareText,</span>
+            <span class="s1">url: shareUrl</span>
+          <span class="s1">})</span>
+        <span class="s1">}catch(err){</span>
+          <span class="s1">try{</span>
+            <span class="s1">await navigator.clipboard.writeText(shareUrl);</span>
+            <span class="s1">alert(&quot;链接已复制，发给好友！&quot;);</span>
+          <span class="s1">}catch(e){</span>
+            <span class="s1">alert(&quot;复制失败，请手动复制地址栏链接&quot;);</span>
+          <span class="s1">}</span>
+        <span class="s1">}</span>
+      <span class="s1">}else{</span>
+        <span class="s1">try{</span>
+          <span class="s1">await navigator.clipboard.writeText(shareUrl);</span>
+          <span class="s1">alert(&quot;链接已复制，发给好友！&quot;);</span>
+        <span class="s1">}catch(e){</span>
+          <span class="s1">alert(&quot;复制失败，请手动复制地址栏链接&quot;);</span>
+        <span class="s1">}</span>
+      <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s1">// 按钮绑定</span>
+    <span class="s1">startBtn.onclick = ()=&gt;{</span>
+      <span class="s1">current=0;</span>
+      <span class="s1">answerList=[];</span>
+      <span class="s1">dimScore=[0,0,0,0,0,0,0,0];</span>
+      <span class="s1">showPage(&quot;q&quot;);</span>
+      <span class="s1">renderQ();</span>
+    <span class="s1">}</span>
+    <span class="s1">bookBtn.onclick = ()=&gt;showPage(&quot;book&quot;);</span>
+    <span class="s1">restartBtn.onclick = ()=&gt;{</span>
+      <span class="s1">current=0;</span>
+      <span class="s1">answerList=[];</span>
+      <span class="s1">dimScore=[0,0,0,0,0,0,0,0];</span>
+      <span class="s1">showPage(&quot;home&quot;);</span>
+    <span class="s1">}</span>
+    <span class="s1">toBookBtn.onclick = ()=&gt;showPage(&quot;book&quot;);</span>
+    <span class="s1">backHomeBtn.onclick = ()=&gt;showPage(&quot;home&quot;);</span>
+<span class="s0">&lt;/script&gt;</span>
+<span class="s0">&lt;/body&gt;</span>
+<span class="s0">&lt;/html&gt;</span>
+</pre>
+</body>
+</html>
